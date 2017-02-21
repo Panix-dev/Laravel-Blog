@@ -17,4 +17,8 @@ Route::get('about', 'PagesController@getAbout');
 
 Route::get('contact', 'PagesController@getContact');
 
+Route::get('blog/{slug}', array('uses' => 'BlogController@getSingle', 'as' => 'blog.single'))->where('slug', '[\w\d\-\_]+');
+
+Route::get('blog', array('uses' => 'BlogController@getIndex', 'as' => 'blog.index'));
+
 Route::resource('posts', 'PostController');

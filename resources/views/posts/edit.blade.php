@@ -22,6 +22,11 @@
 				</div>
 
 				<div class="form-group">
+					{{ Form::label('slug', 'Slug:') }}
+					{{ Form::text('slug', null, array('class' => 'form-control input-lg', 'required' => '', 'maxlength' => '255')) }}
+				</div>
+
+				<div class="form-group">
 					{{ Form::label('body', 'Post Body:') }}
 					{{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
 				</div>
