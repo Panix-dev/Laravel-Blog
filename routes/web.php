@@ -22,3 +22,5 @@ Route::get('blog/{slug}', array('uses' => 'BlogController@getSingle', 'as' => 'b
 Route::get('blog', array('uses' => 'BlogController@getIndex', 'as' => 'blog.index'));
 
 Route::resource('posts', 'PostController');
+
+Auth::routes();
