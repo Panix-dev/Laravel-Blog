@@ -5,6 +5,7 @@
 @section('stylesheets')
 	
 	{!! Html::style('css/parsley.css') !!}
+	{!! Html::style('css/select2.min.css') !!}
 
 @endsection
 
@@ -25,6 +26,20 @@
 					{{ Form::label('slug', 'Slug:') }}
 					{{ Form::text('slug', null, array('class' => 'form-control input-lg', 'required' => '', 'maxlength' => '255')) }}
 				</div>
+
+				<div class="form-group">
+					{{ Form::label('category_id', 'Category:') }}
+					{{ Form::select('category_id', $categories, null, array('class' => 'form-control', 'required' => '')) }}
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('tags', 'Tags:') }}
+					{{ Form::select('tags[]', $tags, null, array('class' => 'form-control js-example-basic-multiple', 'multiple' => '')) }}
+				</div>
+
+				<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
+			    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear</button>
+			    </div>
 
 				<div class="form-group">
 					{{ Form::label('body', 'Post Body:') }}
@@ -63,5 +78,12 @@
 @section('scripts')
 
 	{!! Html::script('js/parsley.min.js') !!}
+	{!! Html::script('js/select2.full.min.js') !!}
+
+	<script type="text/javascript">
+		$(".js-example-basic-multiple").select2();
+		$(".js-example-basic-multiple").val( {!! json_encode($post->tags->pluck('id')) !!} ).trigger("change");
+		$(".js-programmatic-multi-clear").on("click", function () { $(".js-example-basic-multiple").val(null).trigger("change"); });
+	</script>
 
 @endsection
