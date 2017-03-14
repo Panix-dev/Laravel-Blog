@@ -6,6 +6,14 @@
 	
 	{!! Html::style('css/parsley.css') !!}
 	{!! Html::style('css/select2.min.css') !!}
+	<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+
+	<script>
+		tinymce.init({ 
+			selector:'textarea',
+			plugins: 'advlist autolink link image imagetools lists charmap code wordcount',
+		});
+	</script>
 
 @endsection
 
@@ -17,7 +25,7 @@
                 <h1>Create New Post</h1>
                 <hr>
 
-				{!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '']) !!}
+				{!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true]) !!}
 					
 					<div class="form-group">
 						{{ Form::label('title', 'Post Title:') }}
@@ -28,10 +36,6 @@
 						{{ Form::label('slug', 'Slug:') }}
 						{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255')) }}
 					</div>
-
-					<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
-				    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear</button>
-				    </div>
 
 					<div class="form-group">
 						{{ Form::label('category_id', 'Category:') }}
@@ -51,9 +55,18 @@
 						</select>
 					</div>
 
+					<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
+				    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear</button>
+				    </div>
+
+				    <div class="form-group">
+						{{ Form::label('featured_image', 'Upload Featured Image:') }}
+						{{ Form::file('featured_image', array('class' => 'form-control')) }}
+					</div>
+
 					<div class="form-group">
 						{{ Form::label('body', 'Post Body:') }}
-						{{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+						{{ Form::textarea('body', null, array('class' => 'form-control')) }}
 					</div>
 
 					{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block')) }}

@@ -1,3 +1,58 @@
+img {
+	max-width: 100%;
+}
+
 .btn-h1-spacing {
 	margin-top: 18px;
+}
+
+#comment-form {
+	margin-top: 50px;
+}
+
+.comment {
+	margin-bottom: 45px;
+}
+
+.author_name {
+	float: left;
+	margin-left: 15px;
+}
+
+.comment_content {
+	clear: both;
+	margin-left: 65px;
+	line-height: 1.3em;
+	font-size: 16px;
+
+}
+
+.author_image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	float: left;
+	background: #298466 none repeat scroll 0 0;
+}
+
+.author_name h4 {
+	margin:5px 0;
+}
+
+.author_name p {
+	font-size: 11px;
+	font-style: italic;
+	color: #aaa;
+}
+
+.comments_title {
+	margin-bottom: 45px;
+}
+
+.comments_title>span {
+	margin-right: 15px;
+}
+
+#backend_comments {
+	margin-top: 50px;
 }

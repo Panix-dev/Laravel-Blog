@@ -6,6 +6,14 @@
 	
 	{!! Html::style('css/parsley.css') !!}
 	{!! Html::style('css/select2.min.css') !!}
+	<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+
+	<script>
+		tinymce.init({ 
+			selector:'textarea',
+			plugins: 'advlist autolink link image imagetools lists charmap code wordcount',
+		});
+	</script>
 
 @endsection
 
@@ -13,7 +21,7 @@
 		
 		<div class="row">
 
-			{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'data-parsley-validate' => '']) !!}
+			{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'files' => true, 'data-parsley-validate' => '']) !!}
 
 			<div class="col-md-8">
 
@@ -38,12 +46,19 @@
 				</div>
 
 				<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
-			    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear</button>
+			    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear Tags</button>
 			    </div>
 
 				<div class="form-group">
+					{{ Form::label('featured_image', 'Update Featured Image:') }}
+					{{ Form::file('featured_image') }}
+				</div>
+
+				
+
+				<div class="form-group">
 					{{ Form::label('body', 'Post Body:') }}
-					{{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+					{{ Form::textarea('body', null, array('class' => 'form-control')) }}
 				</div>
 
 			</div>
