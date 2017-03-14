@@ -3,4 +3,4 @@
 
 ## Laravel Getting Started
 
-The final Completed Git Commit of the DevMarketer youtube Laravel tutorial playlist.
+The final Completed Git Commit of the DevMarketer youtube channel Laravel tutorial playlist. 
