@@ -11,9 +11,9 @@
 				
 				<h1>{{ $post->title }}</h1>
 
-		        <p class="lead">
+		        <div class="lead">
 		            {!! $post->body !!}
-		        </p>
+		        </div>
 
 		        <hr>
 				
@@ -50,6 +50,24 @@
 		        </div>
 
 			</div>
+
+			<div class="col-md-4">
+				<div class="well">
+					<dl class="dl-horizontal">
+						<label>Meta Title:</label>
+						<p>{{ $post->meta_title }}</p>
+					</dl>
+					<dl class="dl-horizontal">
+						<label>Meta Description:</label>
+						<p>{{ $post->meta_desscription }}</p>
+					</dl>
+					<dl class="dl-horizontal">
+						<label>Meta Keywords:</label>
+						<p>{{ $post->meta_keywords }}</p>
+					</dl>
+				</div>
+			</div>
+
 			<div class="col-md-4">
 				<div class="well">
 					<dl class="dl-horizontal">

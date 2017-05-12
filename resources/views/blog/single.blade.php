@@ -1,8 +1,12 @@
 @extends('main')
 
-<?php $titleTag = htmlspecialchars($post->title); ?>
+<?php $titleTag = htmlspecialchars($post->meta_title); ?>
+<?php $descriptionTag = htmlspecialchars($post->meta_desscription); ?>
+<?php $keywordsTag = htmlspecialchars($post->meta_keywords); ?>
 
 @section('title', "$titleTag")
+@section('meta_description', "$descriptionTag")
+@section('meta_keywords', "$keywordsTag")
 
 @section('stylesheets')
 	
@@ -20,6 +24,12 @@
 				<p>{!! $post->body !!}</p>
 				<hr>
 				<p>Posted In: {{ $post->category->name }} </p>
+				<hr>
+				<div class="tags">
+		        @foreach ($post->tags as $tag)
+					<a class="label label-default" href="/tags/{{ $tag->slug }}">{{ $tag->name }}</a>
+		        @endforeach
+		        </div>
 			</div>
 
 		</div>

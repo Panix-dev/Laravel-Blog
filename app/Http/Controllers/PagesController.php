@@ -34,6 +34,18 @@ class PagesController extends Controller
 
 		return view('pages.about')->withData($data);
     }
+    
+    public function getBachelor() {
+        return view('pages.bachelor');
+    }
+
+    public function getEkdiloseisXoroi() {
+        return view('pages.ekdiloseisxoroi');
+    }
+
+    public function getEtairikesEkdiloseis() {
+        return view('pages.etairikesekdiloseis');
+    }
 
     public function getContact() {
     	return view('pages.contact');

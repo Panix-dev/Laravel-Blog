@@ -1,5 +1,5 @@
 <hr>
 
 <p class="text-center">
-  Copyright Panix - All Rights Reserved
+  Copyright Metr4u - All Rights Reserved
 </p>

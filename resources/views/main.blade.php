@@ -19,9 +19,19 @@
 
         @yield('content')
 
+    </div> <!-- end of container -->
+
+    <div class="newsletter">
+      
+        @include('partials._newsletter')
+
+    </div>
+
+    <div class="footer">
+      
         @include('partials._footer')
 
-    </div> <!-- end of container -->
+    </div>
     
     @include('partials._javascript')
 

@@ -8,15 +8,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url('/') }}">Laravel Blog</a>
+      <a class="navbar-brand" href="{{ url('/') }}">Metr4u</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="{{ Request::is('/') ? "active" : ""}}"><a href="/">Home</a></li>
+        <li class="{{ Request::is('pistes') ? "active" : ""}}"><a href="/pistes"">Pistes</a></li>
+        <li class="{{ Request::is('clubs') ? "active" : ""}}"><a href="/clubs"">Clubs</a></li>
+        <li class="{{ Request::is('bars') ? "active" : ""}}"><a href="/bars"">Bars</a></li>
         <li class="{{ Request::is('blog') ? "active" : ""}}"><a href="/blog"">Blog</a></li>
         <li class="{{ Request::is('about') ? "active" : ""}}"><a href="/about">About</a></li>
+        <li class="{{ Request::is('bachelor-party') ? "active" : ""}}"><a href="/bachelor-party">Bachelor Party</a></li>
+        <li class="{{ Request::is('ekdiloseis-xoroi') ? "active" : ""}}"><a href="/ekdiloseis-xoroi">Ekdilwseis / Xoroi</a></li>
+        <li class="{{ Request::is('etairikes-ekdiloseis') ? "active" : ""}}"><a href="/etairikes-ekdiloseis">Etairikes Ekdilwseis</a></li>
         <li class="{{ Request::is('contact') ? "active" : ""}}"><a href="/contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">    
@@ -31,9 +37,15 @@
               </a>
 
               <ul class="dropdown-menu" role="menu">
+              @if (Auth::user() &&  Auth::user()->id == '1')
+                  <li><a href=" {{ route('items.index') }} ">Items</a></li>
+                  <li><a href=" {{ route('itags.index') }} ">Itags</a></li>
+                  <li><a href=" {{ route('artists.index') }} ">Artists</a></li>
                   <li><a href=" {{ route('posts.index') }} ">Posts</a></li>
                   <li><a href=" {{ route('tags.index') }} ">Tags</a></li>
                   <li><a href=" {{ route('categories.index') }} ">Categories</a></li>
+              @endif
+                  <li><a href="/">Dashboard</a></li>
                   <li role="separator" class="divider"></li>
                   <li>
                       <a href="{{ route('logout') }}"

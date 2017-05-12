@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Tag;
+use App\Post;
 use Session;
 
 class TagController extends Controller
@@ -16,7 +17,7 @@ class TagController extends Controller
      */
 
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('admin', ['except' => 'show']);
     }
 
     public function index()
@@ -38,11 +39,13 @@ class TagController extends Controller
         // Save a new category and then redirect back to index
         $this->validate($request, array(
                 'name' => 'required|max:255',
+                'slug' => 'required|alpha_dash|min:5|max:255|unique:tags,slug',
             ));
 
         $tag = new Tag;
 
         $tag->name = $request->name;
+        $tag->slug = str_slug($request->slug, "-");
         $tag->save();
 
         Session::flash('success', 'The new tag was successfully created!');
@@ -58,10 +61,20 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $slug)
     {
-        $tag = Tag::find($id);
-        return view('tags.show')->withTag($tag);
+        $tag = Tag::where('slug', '=', $slug)->first();
+
+        $posts = $tag->posts()->orderBy('post_tag.post_id', 'desc')->paginate(5);
+
+       // return view('tags.show')->withTag($tag)->withPosts($posts);
+
+        if ($request->ajax()) {
+            //return view('bars.load', ['items' => $items])->render();  
+            return view('tags.load', ['posts' => $posts])->render(); 
+        }
+        // Return a view and pass in the above variable
+        return view('tags.show')->withTag($tag)->withPosts($posts);
     }
 
     /**
@@ -92,12 +105,14 @@ class TagController extends Controller
 
         // Validate the data 
         $this->validate($request, array(
-            'name'  => 'required|max:255'
+            'name'  => 'required|max:255',
+            'slug'         => "required|alpha_dash|min:5|max:255|unique:tags,slug,$id",
         ));
 
         // store in the database
 
         $tag->name = $request->input('name');
+        $tag->slug = str_slug($request->input('slug'), "-");
 
         $tag->save();
 

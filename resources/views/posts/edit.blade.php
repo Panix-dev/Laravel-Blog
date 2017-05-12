@@ -10,7 +10,7 @@
 
 	<script>
 		tinymce.init({ 
-			selector:'textarea',
+			selector:'.post_body_area',
 			plugins: 'advlist autolink link image imagetools lists charmap code wordcount',
 		});
 	</script>
@@ -54,11 +54,26 @@
 					{{ Form::file('featured_image') }}
 				</div>
 
-				
-
 				<div class="form-group">
 					{{ Form::label('body', 'Post Body:') }}
-					{{ Form::textarea('body', null, array('class' => 'form-control')) }}
+					{{ Form::textarea('body', null, array('class' => 'form-control post_body_area')) }}
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('meta_title', 'Meta Title:') }}
+					{{ Form::text('meta_title', null, array('class' => 'form-control meta_title', 'required' => '', 'maxlength' => '70')) }}
+					<div class="meta_title_counter_outer">A maximum of <span class="meta_title_counter"></span> charachters is required.</div>
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('meta_desscription', 'Meta Description:') }}
+					{{ Form::textarea('meta_desscription', null, array('class' => 'form-control meta_desscription', 'maxlength' => '160')) }}
+					<div class="meta_desscription_counter_outer">A maximum of <span class="meta_desscription_counter"></span> charachters is required.</div>
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('meta_keywords', 'Meta Keywords:') }}
+					{{ Form::text('meta_keywords', null, array('class' => 'form-control meta_keywords', 'required' => '')) }}
 				</div>
 
 			</div>
@@ -99,6 +114,44 @@
 		$(".js-example-basic-multiple").select2();
 		$(".js-example-basic-multiple").val( {!! json_encode($post->tags->pluck('id')) !!} ).trigger("change");
 		$(".js-programmatic-multi-clear").on("click", function () { $(".js-example-basic-multiple").val(null).trigger("change"); });
+		(function ($) {
+		    $.fn.extend({
+		        limiter: function (minLimit, maxLimit, elem) {
+		            $(this).on("keydown keyup focus keypress", function (e) {
+		                setCount(this, elem, e);
+		            });
+
+		            function setCount(src, elem, e) {
+		                var chars = src.value.length;
+		                if (chars == maxLimit) {
+		                    //e.preventDefault();
+		                     elem.html(maxLimit - chars);
+		                    elem.addClass('maxLimit');
+		                    return false;
+		                     
+		                } else if (chars > maxLimit) {
+		                    src.value = src.value.substr(0, maxLimit);
+		                    chars = maxLimit;
+		                    elem.addClass('maxLimit');
+		                } else {
+		                    elem.removeClass('maxLimit');
+		                }
+		                if (chars < minLimit) {
+		                    elem.addClass('minLimit');
+		                } else {
+		                    elem.removeClass('minLimit');
+		                }
+		                elem.html(maxLimit - chars);
+		            }
+		            setCount($(this)[0], elem);
+		        }
+		    });
+		})(jQuery);
+
+		var elem = $(".meta_title_counter");
+		var elem2 = $(".meta_desscription_counter");
+		$(".meta_title").limiter(0, 70, elem);
+		$(".meta_desscription").limiter(0, 160, elem2);
 	</script>
 
 @endsection

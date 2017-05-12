@@ -8,15 +8,18 @@ use App\Post;
 
 class BlogController extends Controller
 {
-	public function getIndex() {
+	public function getIndex(Request $request) {
 
     	// Fetch from the database based on slug
 
     	$posts = Post::orderBy('id', 'desc')->paginate(5);
-
+        
+        if ($request->ajax()) {
+            return view('blog.load', ['posts' => $posts])->render();  
+        }
         // Return a view and pass in the above variable
 
-        return view('blog.index')->withPosts($posts);
+        return view('blog.index', compact('posts'))->withPosts($posts);
 
     }
 

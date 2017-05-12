@@ -8,45 +8,49 @@
 		<div class="col-md-8">
 			<h1>{{ $tag->name }} Tag <span class="badge">{{ $tag->posts()->count() }}</span> <small> Posts </small></h1>
 		</div>
-		<div class="col-md-2">
-			<a href="{{ route('tags.edit', $tag->id) }}" class="btn pull-right btn-primary btn-block" style="margin-top: 20px;">Edit</a>
-		</div>
-		<div class="col-md-2">
-			{!! Form::open(['route' => ['tags.destroy', $tag->id], 'method' => 'DELETE']) !!}
-				{{ Form::submit('Delete', array('class' => 'btn pull-right btn-danger btn-block', 'style' => 'margin-top: 20px')) }}
-            {!! Form::close() !!}
-		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<table class="table">
-				<thead>
-					<th>#</th>
-					<th>Title</th>
-					<th>Tags</th>
-					<th></th>
-				</thead>
-				<tbody>
-					@foreach ($tag->posts as $post)
-						<tr>
-							<th>{{ $post->id }}</th>
-							<td>{{ $post->title }}</td>
-							<td>
-								@foreach($post->tags as $tag)
-									<span class="label label-default">{{ $tag->name }}</span>
-								@endforeach
-							</td>
-							<td>
-								{!! Html::LinkRoute('posts.show', 'View', array($post->id), array('class' => 'btn btn-default btn-sm')) !!} 
-								{!! Html::LinkRoute('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-default btn-sm')) !!}
-							</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</div>
-	</div>
+	@if (count($posts) > 0)
+	    <section class="posts">
+	        @include('tags.load')
+	    </section>
+	@endif
 
 @endsection
 
+@section('scripts')
+
+<script type="text/javascript">
+
+(function ($) {
+    $('body').on('click', '.pagination a', function(e) {
+        e.preventDefault();
+
+        $('#load a').css('color', '#dfecf6');
+        $('#load').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="/images/loading.gif" />');
+
+        var url = $(this).attr('href');  
+        getPosts(url);
+        window.history.pushState("", "", url);
+    });
+
+    function getPosts(url) {
+        $.ajax({
+            url : url  
+        }).done(function (data) {
+
+          	$('html, body').animate({
+		        scrollTop: $("#load").offset().top-100
+		    }, 1000, 'swing', function() {
+                $('.posts').html(data); 
+          	});
+             
+        }).fail(function () {
+            alert('Items could not be loaded.');
+        });
+    }
+})(jQuery);
+
+</script>
+
+@endsection

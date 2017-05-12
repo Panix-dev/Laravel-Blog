@@ -15,9 +15,9 @@
             <h1>Categories</h1>
 			<hr>
 				
-			<div class="col-md-8">
+			<div class="col-md-9">
 
-				<table class="table">
+				<table class="table table-striped table-bordered table-hover table-responsive">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -40,7 +40,7 @@
 
 			</div>
 
-			<div class="col-md-3 col-md-offset-1">
+			<div class="col-md-3">
 				<div class="well">
 					{!! Form::open(array('route' => 'categories.store', 'method' => 'POST', 'data-parsley-validate' => '')) !!}
 						

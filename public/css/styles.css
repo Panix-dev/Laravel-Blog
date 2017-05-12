@@ -56,3 +56,28 @@ img {
 #backend_comments {
 	margin-top: 50px;
 }
+
+.meta_title_counter {
+	font-weight: bold;
+}
+
+.meta_description_counter {
+	font-weight: bold;
+}
+
+.meta_desscription_counter {
+	font-weight: bold;
+}
+
+.newsletter {
+	background: #2dcb89 none repeat scroll 0 0;
+    padding: 10em 2em 10em;
+    text-align: center;
+    margin-top: 5em;
+}
+
+.footer {
+    background: #465650 none repeat scroll 0 0;
+    font-size: 1.5em;
+    padding: 3em 1em 4em;
+}

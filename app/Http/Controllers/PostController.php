@@ -15,7 +15,7 @@ use Storage;
 class PostController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -62,16 +62,22 @@ class PostController extends Controller
             'slug'          => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
             'body'          => 'required',
             'category_id'   => 'required|integer',
-            'featured_image' => 'sometimes|image'
+            'featured_image' => 'sometimes|image',
+            'meta_title'     => 'required|max:70',
+            'meta_desscription' => 'required|max:160',
+            'meta_keywords'  => 'required'
         ));
 
         // store in the database
 
         $post = new Post;
         $post->title = $request->title;
-        $post->slug = $request->slug;
+        $post->slug = str_slug($request->slug, "-");
         $post->body = Purifier::clean($request->body);
         $post->category_id = $request->category_id;
+        $post->meta_title = $request->meta_title;
+        $post->meta_desscription = $request->meta_desscription;
+        $post->meta_keywords = $request->meta_keywords;
 
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');
@@ -157,15 +163,21 @@ class PostController extends Controller
             'slug'         => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
             'body'         => 'required',
             'category_id'  => 'required|integer',
-            'featured_image'  => 'image'
+            'featured_image'  => 'image',
+            'meta_title'     => 'required|max:70',
+            'meta_desscription' => 'required|max:160',
+            'meta_keywords'  => 'required'
         ));
 
         // store in the database
 
         $post->title = $request->input('title');
-        $post->slug = $request->input('slug');
+        $post->slug = str_slug($request->input('slug'), "-");
         $post->body = Purifier::clean($request->input('body'));
         $post->category_id = $request->input('category_id');
+        $post->meta_title = $request->input('meta_title');
+        $post->meta_desscription = $request->input('meta_desscription');
+        $post->meta_keywords = $request->input('meta_keywords');
 
         if($request->hasFile('featured_image')) {
             

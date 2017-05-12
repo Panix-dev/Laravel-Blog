@@ -15,7 +15,7 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<table class="table">
+				<table class="table table-striped table-bordered table-hover table-responsive">
 					<thead>
 						<th>#</th>
 						<th>Title</th>

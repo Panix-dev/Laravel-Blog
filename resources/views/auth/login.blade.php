@@ -1,6 +1,8 @@
 @extends('main')
 
 @section('title', 'Login')
+@section('meta_description', 'Meta Description To Be Replaced')
+@section('meta_keywords', 'Meta Keywords To Be Replaced')
 
 @section('content')
 
