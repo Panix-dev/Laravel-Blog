@@ -2,19 +2,19 @@
 	<div class="simform-inner">
 		<ol class="questions">
 			<li>
-				<span><label for="q1">What is your name?</label></span>
-				{{ Form::text('q1', null, array('id' => 'q1','placeholder' => 'name')) }}
+				<span><label for="q1">Ποιο είναι το όνομά σου?</label></span>
+				{{ Form::text('q1', null, array('id' => 'q1','placeholder' => 'όνομα')) }}
 			</li>
 			<li>
-				<span><label for="q2">What is your email?</label></span>
+				<span><label for="q2">Ποιο είναι το email σου?</label></span>
 				{{ Form::email('q2', null, array('id' => 'q2','placeholder' => 'email')) }}
 			</li>
 			<li>
-				<span><label for="q3">What is your favorite venue?</label></span>
-				{{ Form::text('q3', null, array('id' => 'q3','placeholder' => 'venue')) }}
+				<span><label for="q3">Ποιο είναι το αγαπημένο σου μαγαζί?</label></span>
+				{{ Form::text('q3', null, array('id' => 'q3','placeholder' => 'μαγαζί')) }}
 			</li>
 		</ol><!-- /questions -->
-		<button class="submit" type="submit">Subscribe to our Newsletter</button>
+		<button class="submit" type="submit">Εγγραφή στο Newsletter</button>
 		<div class="controls">
 			<button class="fa fa-arrow-right next"></button>
 			<div class="progress"></div>

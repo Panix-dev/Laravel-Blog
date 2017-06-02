@@ -8,7 +8,7 @@ class Itag extends Model
 {
     public function items() {
 
-    	return $this->belongsToMany('App\Item', 'item_itag', 'itag_id', 'item_id');
+    	return $this->belongsToMany('App\Item', 'item_itag', 'itag_id', 'item_id')->withPivot('item_id');
 
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\Type;
@@ -22,6 +23,21 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function favoriteItem(Item $item)
+    {
+        Auth::user()->favorites()->attach($item->id);
+
+        return back();
+    }
+
+    public function unFavoriteItem(Item $item)
+    {
+        Auth::user()->favorites()->detach($item->id);
+
+        return back();
+    }
+
     public function index()
     {
         // Create a variable and sote all the blog posts in it from the database
@@ -240,6 +256,13 @@ class ItemController extends Controller
         Session::flash('success', 'The item page was successfully updated!');
         
         return redirect()->route('items.show', $item->slug);
+    }
+
+    public function delete($id)
+    {
+        $item = Item::find($id);
+
+        return view('items.delete')->withItem($item);
     }
 
     /**

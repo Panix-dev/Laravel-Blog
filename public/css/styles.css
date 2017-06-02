@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700&subset=greek');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Pacifico');
+
+
+body {
+	font-family: "Open Sans",sans-serif;
+	background-color: #000;
+}
+
 img {
 	max-width: 100%;
+}
+
+.clear {
+	clear: both;
 }
 
 .btn-h1-spacing {
@@ -70,14 +83,251 @@ img {
 }
 
 .newsletter {
-	background: #2dcb89 none repeat scroll 0 0;
+	background: #631560 url("/img/newsletter_bg.png") no-repeat scroll center top / cover ;
     padding: 10em 2em 10em;
     text-align: center;
     margin-top: 5em;
 }
 
-.footer {
-    background: #465650 none repeat scroll 0 0;
+.footer_outer {
+	    min-height: 615px;
+}
+
+.footer_area {
     font-size: 1.5em;
     padding: 3em 1em 4em;
 }
+
+.copy {
+    background: #000 none repeat scroll 0 0;
+    color: #fff;
+    height: 110px;
+    padding-top: 10px;
+}
+
+.social_media {
+	padding: 20px 0;
+}
+
+.grid__item {
+	min-height: 150px;
+	max-width: calc(100vw - 40px);
+	margin: 0 20px 20px 20px;
+	padding: 0 0 50px 0;
+	z-index: 1;
+	position: relative;
+	text-align: center;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-transform: translate3d(0,0,0); /* Solves Safari bug because of SVG clipping mask */
+}
+
+/* General link styles */
+.link {
+	outline: none;
+	text-decoration: none;
+	position: relative;
+	font-size: 8em;
+	line-height: 1;
+	color: #9e9ba4;
+	display: inline-block;
+}
+
+.follow_us {
+	font-family: 'Pacifico', cursive;
+	font-size: 35px;
+	text-align: center;
+	margin-top:50px;
+	color: #444;
+}
+
+.link--mallki {
+	font-weight: 800;
+	color: #444;
+	font-family: 'Bungee Shade', cursive;
+	-webkit-transition: color 0.5s 0.25s;
+	transition: color 0.5s 0.25s;
+	overflow: hidden;
+}
+
+.link--mallki:focus {
+	color: #444;
+	text-decoration: none;
+}
+
+.link--mallki:hover {
+	-webkit-transition: none;
+	transition: none;
+	color: transparent;
+}
+
+.link--mallki::before {
+	content: '';
+	width: 100%;
+	height: 6px;
+	margin: -3px 0 0 0;
+	background: #631560;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	-webkit-transform: translate3d(-100%,0,0);
+	transform: translate3d(-100%,0,0);
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: transform 0.4s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.link--mallki:hover::before {
+	-webkit-transform: translate3d(100%,0,0);
+	transform: translate3d(100%,0,0);
+}
+
+.link--mallki span {
+	position: absolute;
+	height: 50%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+}
+
+.link--mallki span::before {
+	content: attr(data-letters);
+	color: red;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	color: #631560;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.link--mallki span:nth-child(2) {
+	top: 50%;
+}
+
+.link--mallki span:first-child::before {
+	top: 0;
+	-webkit-transform: translate3d(0,100%,0);
+	transform: translate3d(0,100%,0);
+}
+
+.link--mallki span:nth-child(2)::before {
+	bottom: 0;
+	-webkit-transform: translate3d(0,-100%,0);
+	transform: translate3d(0,-100%,0);
+}
+
+.link--mallki:hover span::before {
+	-webkit-transition-delay: 0.3s;
+	transition-delay: 0.3s;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+	transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+}
+
+
+@media screen and (max-width: 42em) {
+	.link--mallki { font-size: 3.5em; }
+}
+
+
+.hi-icon-wrap {
+	text-align: center;
+	margin: 0 auto;
+	padding: 0;
+	position: fixed;
+	bottom: 0px;
+	right: 45px;
+}
+
+.hi-icon, .hi-icon:focus {
+	display: inline-block;
+	font-size: 15px;
+	cursor: pointer;
+	margin: 0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	color: #cccccc;
+}
+
+.hi-icon i {
+	position: relative;
+    top: 11px;
+}
+
+.hi-icon:after {
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: '';
+	-webkit-box-sizing: content-box; 
+	-moz-box-sizing: content-box; 
+	box-sizing: content-box;
+}
+
+.hi-icon:before {
+	speak: none;
+	font-size: 25px;
+	line-height: 10px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Effect 9 */
+.hi-icon-effect-9 .hi-icon {
+	-webkit-transition: box-shadow 0.2s;
+	-moz-transition: box-shadow 0.2s;
+	transition: box-shadow 0.2s;
+}
+
+.hi-icon-effect-9 .hi-icon:after {
+	top: 0;
+	left: 0;
+	padding: 0;
+	box-shadow: 0 0 0 4px #cccccc;
+	-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.2s, opacity 0.2s;
+	transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Effect 9b */
+.hi-icon-effect-9b .hi-icon:hover:after {
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+}
+
+.hi-icon-effect-9b .hi-icon:hover {
+	box-shadow: 0 0 0 5px rgba(179,179,179,0.4);
+	color: #cccccc;
+}
+
+.go_to_top {
+    transition: all 500ms ease-in-out 0s;
+    opacity: 0;
+}
+
+.to_top_revealed {
+    bottom: 25px;
+    transition: all 500ms ease-in-out 0s;
+    opacity: 1;
+}
+

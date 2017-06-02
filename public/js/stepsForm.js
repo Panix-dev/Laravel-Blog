@@ -227,10 +227,10 @@
 		var message = '';
 		switch( err ) {
 			case 'EMPTYSTR' : 
-				message = 'Please fill the field before continuing';
+				message = 'Συμπληρώστε το πεδίο πριν συνεχίσετε';
 				break;
 			case 'INVALIDEMAIL' : 
-				message = 'Please fill a valid email address';
+				message = 'Συμπληρώστε μια έγκυρη διεύθυνση email';
 				break;
 			// ...
 		};

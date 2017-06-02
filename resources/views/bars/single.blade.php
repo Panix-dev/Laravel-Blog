@@ -55,7 +55,7 @@
 
 		        <div class="itags">
 			        @foreach ($item->itags as $itag)
-						<span class="label label-default">{{ $itag->name }}</span>
+						<a class="label label-default" href="/itags/{{ $itag->slug }}">{{ $itag->name }}</a>
 			        @endforeach
 		        </div>
 

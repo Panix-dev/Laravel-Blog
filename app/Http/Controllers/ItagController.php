@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Itag;
+use App\Item;
 use Session;
 
 class ItagController extends Controller
@@ -36,11 +37,19 @@ class ItagController extends Controller
         // Save a new itag and then redirect back to index
         $this->validate($request, array(
                 'name' => 'required|max:255',
+                'slug' => 'required|alpha_dash|min:5|max:255|unique:itags,slug',
+                'meta_title'     => 'required|max:70',
+                'meta_desscription' => 'required|max:160',
+                'meta_keywords'  => 'required'
             ));
 
         $itag = new Itag;
 
         $itag->name = $request->name;
+        $itag->slug = str_slug($request->slug, "-");
+        $itag->meta_title = $request->meta_title;
+        $itag->meta_desscription = $request->meta_desscription;
+        $itag->meta_keywords = $request->meta_keywords;
         $itag->save();
 
         Session::flash('success', 'The new itag was successfully created!');
@@ -56,10 +65,20 @@ class ItagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $slug)
     {
-        $itag = Itag::find($id);
-        return view('itags.show')->withItag($itag);
+        $itag = Itag::where('slug', '=', $slug)->first();
+
+        $items = $itag->items()->orderBy('item_itag.item_id', 'desc')->paginate(5);
+ 
+       // return view('tags.show')->withTag($tag)->withPosts($posts);
+
+        if ($request->ajax()) {
+            //return view('bars.load', ['items' => $items])->render();  
+            return view('itags.load', ['items' => $items])->render(); 
+        }
+        // Return a view and pass in the above variable
+        return view('itags.show')->withItag($itag)->withItems($items);
     }
 
     /**
@@ -90,20 +109,34 @@ class ItagController extends Controller
 
         // Validate the data 
         $this->validate($request, array(
-            'name'  => 'required|max:255'
+            'name'  => 'required|max:255',
+            'slug'         => "required|alpha_dash|min:5|max:255|unique:itags,slug,$id",
+            'meta_title'     => 'required|max:70',
+            'meta_desscription' => 'required|max:160',
+            'meta_keywords'  => 'required'
         ));
 
         // store in the database
 
         $itag->name = $request->input('name');
-
+        $itag->slug = str_slug($request->input('slug'), "-");
+        $itag->meta_title = $request->input('meta_title');
+        $itag->meta_desscription = $request->input('meta_desscription');
+        $itag->meta_keywords = $request->input('meta_keywords');
         $itag->save();
 
         // redirect to another page with flash message
 
         Session::flash('success', 'The itag was successfully updated!');
         
-        return redirect()->route('itags.show', $itag->id);
+        return redirect()->route('itags.index');
+    }
+
+    public function delete($id)
+    {
+        $itag = Itag::find($id);
+
+        return view('itags.delete')->withItag($itag);
     }
 
     /**

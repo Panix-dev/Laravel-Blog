@@ -41,19 +41,15 @@
 				<div class="well">
 					<div class="row">
 						<div class="col-sm-6">
-							{!! Html::LinkRoute('artists.edit', 'Edit', array($artist->id), array('class' => 'btn btn-primary btn-block')) !!}
+							{!! Html::LinkRoute('artists.edit', 'Επεξεργασία', array($artist->id), array('class' => 'btn btn-primary btn-block')) !!}
 						</div>
 						<div class="col-sm-6">
-							{!! Form::open(['route' => ['artists.destroy', $artist->id], 'method' => 'DELETE']) !!}
-
-								{{ Form::submit('Delete', array('class' => 'btn btn-danger btn-block')) }}
-
-			                {!! Form::close() !!}
+							{!! Html::LinkRoute('artists.delete', 'Διαγραφή', array($artist->id), array('class' => 'btn btn-danger btn-block')) !!}
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							{!! Html::LinkRoute('artists.index', '<< See All Artists', array(), array('class' => 'btn btn-default btn-block btn-h1-spacing')) !!}
+							{!! Html::LinkRoute('artists.index', '<< Προβολή Όλων', array(), array('class' => 'btn btn-default btn-block btn-h1-spacing')) !!}
 						</div>
 					</div>
 				</div>

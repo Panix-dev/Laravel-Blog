@@ -1,6 +1,12 @@
 @extends('main')
 
-@section('title', "$itag->name Itag")
+<?php $titleTag = htmlspecialchars($itag->meta_title); ?>
+<?php $descriptionTag = htmlspecialchars($itag->meta_desscription); ?>
+<?php $keywordsTag = htmlspecialchars($itag->meta_keywords); ?>
+
+@section('title', "$titleTag")
+@section('meta_description', "$descriptionTag")
+@section('meta_keywords', "$keywordsTag")
 
 @section('content')
 		
@@ -8,45 +14,50 @@
 		<div class="col-md-8">
 			<h1>{{ $itag->name }} Itag <span class="badge">{{ $itag->items()->count() }}</span> <small> Items </small></h1>
 		</div>
-		<div class="col-md-2">
-			<a href="{{ route('itags.edit', $itag->id) }}" class="btn pull-right btn-primary btn-block" style="margin-top: 20px;">Edit</a>
-		</div>
-		<div class="col-md-2">
-			{!! Form::open(['route' => ['itags.destroy', $itag->id], 'method' => 'DELETE']) !!}
-				{{ Form::submit('Delete', array('class' => 'btn pull-right btn-danger btn-block', 'style' => 'margin-top: 20px')) }}
-            {!! Form::close() !!}
-		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<table class="table">
-				<thead>
-					<th>#</th>
-					<th>Title</th>
-					<th>Itags</th>
-					<th></th>
-				</thead>
-				<tbody>
-					@foreach ($itag->items as $item)
-						<tr>
-							<th>{{ $item->id }}</th>
-							<td>{{ $item->title }}</td>
-							<td>
-								@foreach($item->itags as $itag)
-									<span class="label label-default">{{ $itag->name }}</span>
-								@endforeach
-							</td>
-							<td>
-								{!! Html::LinkRoute('items.show', 'View', array($item->slug), array('class' => 'btn btn-default btn-sm')) !!} 
-								{!! Html::LinkRoute('items.edit', 'Edit', array($item->id), array('class' => 'btn btn-default btn-sm')) !!}
-							</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</div>
-	</div>
+	@if (count($items) > 0)
+	    <section class="posts">
+	        @include('itags.load')
+	    </section>
+	@endif
 
 @endsection
 
+
+@section('scripts')
+
+<script type="text/javascript">
+
+(function ($) {
+    $('body').on('click', '.pagination a', function(e) {
+        e.preventDefault();
+
+        $('#load a').css('color', '#dfecf6');
+        $('#load').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="/images/loading.gif" />');
+
+        var url = $(this).attr('href');  
+        getPosts(url);
+        window.history.pushState("", "", url);
+    });
+
+    function getPosts(url) {
+        $.ajax({
+            url : url  
+        }).done(function (data) {
+
+          	$('html, body').animate({
+		        scrollTop: $("#load").offset().top-100
+		    }, 1000, 'swing', function() {
+                $('.posts').html(data); 
+          	});
+             
+        }).fail(function () {
+            alert('Items could not be loaded.');
+        });
+    }
+})(jQuery);
+
+</script>
+
+@endsection

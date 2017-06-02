@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Create New Item')
+@section('title', 'Δημιουργία Νέου Μαγαζιού')
 
 @section('stylesheets')
 	
@@ -22,13 +22,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-                <h1>Create New Item</h1>
+                <h1>Δημιουργία Νέου Μαγαζιού</h1>
                 <hr>
 
 				{!! Form::open(['route' => 'items.store', 'data-parsley-validate' => '', 'files' => true]) !!}
 					
 					<div class="form-group">
-						{{ Form::label('title', 'Item Title:') }}
+						{{ Form::label('title', 'Τίτλος Μαγαζιού:') }}
 						{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 					</div>
 
@@ -38,7 +38,7 @@
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('type_id', 'Type:') }}
+						{{ Form::label('type_id', 'Τύπος:') }}
 						<select name="type_id" class="form-control" required="">
 							@foreach ($types as $type)
 								<option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -47,7 +47,7 @@
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('itags', 'Itags:') }}
+						{{ Form::label('itags', 'Tags:') }}
 						<select name="itags[]" class="form-control js-example-basic-multiple" multiple="">
 							@foreach ($itags as $itag)
 								<option value="{{ $itag->id }}">{{ $itag->name }}</option>
@@ -56,41 +56,41 @@
 					</div>
 
 					<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
-				    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear</button>
+				    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Εκαθάριση</button>
 				    </div>
 
 				    <div class="form-group">
-						{{ Form::label('featured_image', 'Upload Featured Image:') }}
+						{{ Form::label('featured_image', 'Κεντρική Εικόνα:') }}
 						{{ Form::file('featured_image', array('class' => 'form-control')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('pricing_body', 'Pricing Body:') }}
+						{{ Form::label('pricing_body', 'Αναφορα Τιμής:') }}
 						{{ Form::textarea('pricing_body', null, array('class' => 'form-control item_body_area')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('body_1', 'Item Body 1:') }}
+						{{ Form::label('body_1', 'Τμήμα Περιεχομένου 1:') }}
 						{{ Form::textarea('body_1', null, array('class' => 'form-control item_body_area')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('body_2', 'Item Body 2:') }}
+						{{ Form::label('body_2', 'Τμήμα Περιεχομένου 2:') }}
 						{{ Form::textarea('body_2', null, array('class' => 'form-control item_body_area')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('body_3', 'Item Body 3:') }}
+						{{ Form::label('body_3', 'Τμήμα Περιεχομένου 3:') }}
 						{{ Form::textarea('body_3', null, array('class' => 'form-control item_body_area')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('body_4', 'Item Body 4:') }}
+						{{ Form::label('body_4', 'Τμήμα Περιεχομένου 4:') }}
 						{{ Form::textarea('body_4', null, array('class' => 'form-control item_body_area')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('weekdays', 'Weekdays:') }}
+						{{ Form::label('weekdays', 'Ημέρες Λειτουργείας:') }}
 						{{ Form::text('weekdays', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 					</div>
 
@@ -100,20 +100,20 @@
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('points_to_award', 'Points To Award:') }}
+						{{ Form::label('points_to_award', 'Πόντοι που ανατίθενται:') }}
 						{{ Form::text('points_to_award', null, array('class' => 'form-control', 'required' => '')) }}
 					</div>
 
 					<div class="form-group">
 						{{ Form::label('meta_title', 'Meta Title:') }}
 						{{ Form::text('meta_title', null, array('class' => 'form-control meta_title', 'required' => '', 'maxlength' => '70')) }}
-						<div class="meta_title_counter_outer">A maximum of <span class="meta_title_counter"></span> charachters is required.</div>
+						<div class="meta_title_counter_outer">Απαιτείται ένα maximum των <span class="meta_title_counter"></span> χαρακτήρων.</div>
 					</div>
 
 					<div class="form-group">
 						{{ Form::label('meta_desscription', 'Meta Description:') }}
 						{{ Form::textarea('meta_desscription', null, array('class' => 'form-control meta_desscription', 'maxlength' => '160')) }}
-						<div class="meta_desscription_counter_outer">A maximum of <span class="meta_desscription_counter"></span> charachters is required.</div>
+						<div class="meta_desscription_counter_outer">Απαιτείται ένα maximum των <span class="meta_desscription_counter"></span> χαρακτήρων.</div>
 					</div>
 
 					<div class="form-group">
@@ -121,7 +121,7 @@
 						{{ Form::text('meta_keywords', null, array('class' => 'form-control meta_keywords', 'required' => '')) }}
 					</div>
 
-					{{ Form::submit('Create Item', array('class' => 'btn btn-success btn-lg btn-block')) }}
+					{{ Form::submit('Δημιουργία Μαγαζιού', array('class' => 'btn btn-success btn-lg btn-block')) }}
 
 
                 {!! Form::close() !!}

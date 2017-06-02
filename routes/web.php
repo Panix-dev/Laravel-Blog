@@ -24,20 +24,25 @@ Route::get('blog/{slug}', array('uses' => 'BlogController@getSingle', 'as' => 'b
 Route::get('blog', array('uses' => 'BlogController@getIndex', 'as' => 'blog.index'));
 
 Route::resource('posts', 'PostController');
+Route::get('posts/{id}/delete', array('uses' => 'PostController@delete', 'as' => 'posts.delete'));
 
 Route::resource('artists', 'ArtistController', array('except' => array('show')));
 Route::get('artists/{slug}', array('uses' => 'ArtistController@show', 'as' => 'artists.show'))->where('slug', '[\w\d\-\_]+');
+Route::get('artists/{id}/delete', array('uses' => 'ArtistController@delete', 'as' => 'artists.delete'));
 
 Route::resource('items', 'ItemController', array('except' => array('show')));
 Route::get('items/{slug}', array('uses' => 'ItemController@show', 'as' => 'items.show'))->where('slug', '[\w\d\-\_]+');
+Route::get('items/{id}/delete', array('uses' => 'ItemController@delete', 'as' => 'items.delete'));
 
 Route::resource('categories', 'CategoryController', array('except' => array('create')));
 
 Route::resource('tags', 'TagController', array('except' => array('create'), 'except' => array('show')));
 Route::get('tags/{slug}', array('uses' => 'TagController@show', 'as' => 'tags.show'))->where('slug', '[\w\d\-\_]+');
+Route::get('tags/{id}/delete', array('uses' => 'TagController@delete', 'as' => 'tags.delete'));
 
 Route::resource('itags', 'ItagController', array('except' => array('create'), 'except' => array('show')));
 Route::get('itags/{slug}', array('uses' => 'ItagController@show', 'as' => 'itags.show'))->where('slug', '[\w\d\-\_]+');
+Route::get('itags/{id}/delete', array('uses' => 'ItagController@delete', 'as' => 'itags.delete'));
 
 Route::post('comments/{post_id}', array('uses' => 'CommentsController@store', 'as' => 'comments.store'));
 Route::get('comments/{id}', array('uses' => 'CommentsController@edit', 'as' => 'comments.edit'));
@@ -55,5 +60,10 @@ Route::get('clubs', array('uses' => 'ClubsController@getIndex', 'as' => 'clubs.i
 
 Route::get('bars/{slug}', array('uses' => 'BarsController@getSingle', 'as' => 'bars.single'))->where('slug', '[\w\d\-\_]+');
 Route::get('bars', array('uses' => 'BarsController@getIndex', 'as' => 'bars.index'));
+
+Route::post('favorite/{item}', 'ItemController@favoriteItem');
+Route::post('unfavorite/{item}', 'ItemController@unFavoriteItem');
+
+Route::get('my-favorites', array('uses' => 'UsersController@myFavorites', 'as' => 'favorites.index'))->middleware('auth');
 
 Auth::routes();

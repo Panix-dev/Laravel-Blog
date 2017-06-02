@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Favorite;
+use Illuminate\Support\Facades\Auth;
 
 class Item extends Model
 {
@@ -23,4 +25,10 @@ class Item extends Model
     	return $this->hasMany('App\Artist');
 
     }
+
+    public function favorited()
+	{
+	    return (bool) Favorite::where('user_id', Auth::id())->where('item_id', $this->id)->first();
+	}
+
 }

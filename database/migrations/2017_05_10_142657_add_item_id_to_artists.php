@@ -16,9 +16,6 @@ class AddItemIdToArtists extends Migration
         Schema::table('artists', function (Blueprint $table) {
             $table->integer('item_id')->nullable()->after('slug')->unsigned();
         });
-        Schema::table('artists', function($table){
-            $table->foreign('item_id')->references('id')->on('artists')->onDelete('cascade');
-        });
     }
 
     /**
@@ -31,6 +28,5 @@ class AddItemIdToArtists extends Migration
         Schema::table('artists', function (Blueprint $table) {
             $table->dropColumn('item_id');
         });
-        Schema::dropForeign(['item_id']);
     }
 }

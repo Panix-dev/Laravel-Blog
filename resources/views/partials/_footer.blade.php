@@ -1,5 +1,5 @@
-<hr>
+<div class="footer_area">
+	Footer Content Here
+</div>
 
-<p class="text-center">
-  Copyright Metr4u - All Rights Reserved
-</p>
+

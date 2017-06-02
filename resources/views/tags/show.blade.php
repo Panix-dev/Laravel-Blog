@@ -1,6 +1,12 @@
 @extends('main')
 
-@section('title', "$tag->name Tag")
+<?php $titleTag = htmlspecialchars($tag->meta_title); ?>
+<?php $descriptionTag = htmlspecialchars($tag->meta_desscription); ?>
+<?php $keywordsTag = htmlspecialchars($tag->meta_keywords); ?>
+
+@section('title', "$titleTag")
+@section('meta_description', "$descriptionTag")
+@section('meta_keywords', "$keywordsTag")
 
 @section('content')
 		

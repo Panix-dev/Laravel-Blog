@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Item::class, 'favorites', 'user_id', 'item_id')->withPivot('item_id');
+    }
 }

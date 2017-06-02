@@ -1,17 +1,15 @@
 @extends('main')
 
-@section('title', 'All Artists')
-@section('meta_description', 'Artists Description')
-@section('meta_keywords', 'Artists keywords')
+@section('title', 'Όλοι οι Καλλιτέχνες')
 
 @section('content')
 		
 	<div class="row">
 		<div class="col-md-10">
-			<h1>All Artists</h1>
+			<h1>Όλοι οι Καλλιτέχνες</h1>
 		</div>
 		<div class="col-md-2">
-			{!! Html::LinkRoute('artists.create', 'Create new artist', array(), array('class' => 'btn btn-primary btn-block btn-h1-spacing')) !!}
+			{!! Html::LinkRoute('artists.create', 'Δημιουργία Νέου', array(), array('class' => 'btn btn-primary btn-block btn-h1-spacing')) !!}
 		</div>
 		<div class="col-md-12"><hr></div>
 
@@ -20,21 +18,24 @@
 				<table class="table table-striped table-bordered table-hover table-responsive">
 					<thead>
 						<th>#</th>
-						<th>Name</th>
-						<th>Body</th>
-						<th>Cteated At</th>
+						<th>Όνομα</th>
+						<th>Περιγραφή</th>
+						<th>Δημιουργήθηκε</th>
+						<th></th>
 						<th></th>
 					</thead>
 					<tbody>
 						@foreach ($artists as $artist)
 							<tr>
-								<th>{{ $artist->id }}</th>
-								<td>{{ $artist->name }}</td>
-								<td>{{ substr(strip_tags($artist->body), 0, 50) }}{{ strlen(strip_tags($artist->body)) > 50 ? '...' : '' }}</td>
-								<td>{{ date('M j, Y', strtotime($artist->created_at)) }}</td>
-								<td>
-								{!! Html::LinkRoute('artists.show', 'View', array($artist->slug), array('class' => 'btn btn-default btn-sm')) !!} 
-								{!! Html::LinkRoute('artists.edit', 'Edit', array($artist->id), array('class' => 'btn btn-default btn-sm')) !!}
+								<td style="width:20px;" align="center"><span class="label label-primary">{{ $artist->id }}</span></td>
+								<td style="width:10%">{{ $artist->name }}</td>
+								<td>{{ $artist->meta_desscription }}</td>
+								<td align="center" style="width:10%">{{ date('M j, Y', strtotime($artist->created_at)) }}</td>
+								<td style="width:80px;" align="center">
+								{!! Html::LinkRoute('artists.show', 'View', array($artist->slug), array('class' => 'btn btn-primary btn-sm btn-block')) !!} 
+								</td>
+								<td style="width:80px;" align="center">
+								{!! Html::LinkRoute('artists.edit', 'Edit', array($artist->id), array('class' => 'btn btn-warning btn-sm btn-block')) !!}
 								</td>
 							</tr>
 						@endforeach

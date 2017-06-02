@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Edit Blog Post')
+@section('title', 'Επεξεργασία Άρθρου')
 
 @section('stylesheets')
 	
@@ -26,7 +26,7 @@
 			<div class="col-md-8">
 
 				<div class="form-group">
-					{{ Form::label('title', 'Post Title:') }}
+					{{ Form::label('title', 'Τίτλος άρθρου:') }}
 					{{ Form::text('title', null, array('class' => 'form-control input-lg', 'required' => '', 'maxlength' => '255')) }}
 				</div>
 
@@ -36,7 +36,7 @@
 				</div>
 
 				<div class="form-group">
-					{{ Form::label('category_id', 'Category:') }}
+					{{ Form::label('category_id', 'Κατηγορία:') }}
 					{{ Form::select('category_id', $categories, null, array('class' => 'form-control', 'required' => '')) }}
 				</div>
 
@@ -46,29 +46,29 @@
 				</div>
 
 				<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
-			    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear Tags</button>
+			    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Εκαθάριση</button>
 			    </div>
 
 				<div class="form-group">
-					{{ Form::label('featured_image', 'Update Featured Image:') }}
+					{{ Form::label('featured_image', 'Κεντρική Εικόνα:') }}
 					{{ Form::file('featured_image') }}
 				</div>
 
 				<div class="form-group">
-					{{ Form::label('body', 'Post Body:') }}
+					{{ Form::label('body', 'Περιγραφή:') }}
 					{{ Form::textarea('body', null, array('class' => 'form-control post_body_area')) }}
 				</div>
 
 				<div class="form-group">
 					{{ Form::label('meta_title', 'Meta Title:') }}
 					{{ Form::text('meta_title', null, array('class' => 'form-control meta_title', 'required' => '', 'maxlength' => '70')) }}
-					<div class="meta_title_counter_outer">A maximum of <span class="meta_title_counter"></span> charachters is required.</div>
+					<div class="meta_title_counter_outer">Απαιτείται ένα maximum των <span class="meta_title_counter"></span> χαρακτήρων.</div>
 				</div>
 
 				<div class="form-group">
 					{{ Form::label('meta_desscription', 'Meta Description:') }}
 					{{ Form::textarea('meta_desscription', null, array('class' => 'form-control meta_desscription', 'maxlength' => '160')) }}
-					<div class="meta_desscription_counter_outer">A maximum of <span class="meta_desscription_counter"></span> charachters is required.</div>
+					<div class="meta_desscription_counter_outer">Απαιτείται ένα maximum των <span class="meta_desscription_counter"></span> χαρακτήρων.</div>
 				</div>
 
 				<div class="form-group">
@@ -80,20 +80,20 @@
 			<div class="col-md-4">
 				<div class="well">
 					<dl class="dl-horizontal">
-						<dt>Created At:</dt>
+						<dt>Δημιουργήθηκε στις:</dt>
 						<dd>{{ date('M j, Y h:ia', strtotime($post->created_at)) }}</dd>
 					</dl>
 					<dl class="dl-horizontal">
-						<dt>Last Updated:</dt>
+						<dt>Τροποποιήθηκε στις:</dt>
 						<dd>{{ date('M j, Y h:ia', strtotime($post->updated_at)) }}</dd>
 					</dl>
 					<hr>
 					<div class="row">
 						<div class="col-sm-6">
-							{!! Html::LinkRoute('posts.show', 'Cancel', array($post->id), array('class' => 'btn btn-danger btn-block')) !!}
+							{!! Html::LinkRoute('posts.show', 'Ακύρωση', array($post->id), array('class' => 'btn btn-danger btn-block')) !!}
 						</div>
 						<div class="col-sm-6">
-							{{ Form::submit('Save Changes', array('class' => 'btn btn-success btn-block')) }}
+							{{ Form::submit('Αποθήκευση', array('class' => 'btn btn-success btn-block')) }}
 						</div>
 					</div>
 				</div>

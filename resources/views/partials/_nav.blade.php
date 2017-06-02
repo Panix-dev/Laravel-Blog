@@ -1,68 +1,82 @@
-<nav class="navbar navbar-default">
+<div class="menu-wrap">
+  <nav class="menu">
+    <div class="icon-list">
+        
+        @if (Auth::user())
+          <div class="profile_menu"><b>Γειά</b> {{ Auth::user()->name }}</div>
+        @endif
+
+        <a class="{{ Request::is('pistes') ? "active" : ""}}" href="/pistes""><i class="fa fa-fw fa-glass"></i>Πίστες / Μπουζούκια</a>
+        <a class="{{ Request::is('clubs') ? "active" : ""}}" href="/clubs""><i class="fa fa-fw fa-glass"></i>Νυχτερινά Club</a>
+        <a class="{{ Request::is('bars') ? "active" : ""}}" href="/bars""><i class="fa fa-fw fa-glass"></i>Νυχτερινά Bar</a>
+        <hr>
+        <a class="{{ Request::is('bachelor-party') ? "active" : ""}}" href="/bachelor-party"><i class="fa fa-fw fa-calendar"></i>Bachelor Parties</a>
+        <a class="{{ Request::is('ekdiloseis-xoroi') ? "active" : ""}}" href="/ekdiloseis-xoroi"><i class="fa fa-fw fa-calendar"></i>Εκδηλώσεις / Χώροι</a>
+        <a class="{{ Request::is('etairikes-ekdiloseis') ? "active" : ""}}" href="/etairikes-ekdiloseis"><i class="fa fa-fw fa-calendar"></i>Εταιρικές Εκδηλώσεις</a>
+        <hr>
+        <a class="{{ Request::is('about') ? "active" : ""}}" href="/about"><i class="fa fa-fw fa-users"></i>Σχετικά με εμάς</a>
+        <a class="{{ Request::is('blog') ? "active" : ""}}" href="/blog""><i class="fa fa-fw fa-comments"></i>Διαβάστε το Blog</a>
+        <a class="{{ Request::is('contact') ? "active" : ""}}" href="/contact"><i class="fa fa-fw fa-envelope"></i>Επικοινωνήστε Μαζί Μας</a>
+
+        @if (Auth::user())
+        <hr>
+        <a class="{{ Request::is('my-favorites') ? "active" : ""}}" href=" {{ route('favorites.index') }} "><i class="fa fa-fw fa-heart"></i>Τα αγαπημένα μου</a>
+        <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                <i class="fa fa-fw fa-sign-out"></i>Αποσύνδεση
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
+        @endif
+
+    </div>
+  </nav>
+  <button class="close-button" id="close-button">Close Menu</button>
+</div>
+
+<nav class="navbar">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{{ url('/') }}">Metr4u</a>
+      <div class="menu-button fa fa-bars pull-left" id="open-button"></div>
+      <a class="pull-left logo" href="{{ url('/') }}"> <img src="/logo.png" alt="Metr4U - Premium Reservations" /> </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="{{ Request::is('/') ? "active" : ""}}"><a href="/">Home</a></li>
-        <li class="{{ Request::is('pistes') ? "active" : ""}}"><a href="/pistes"">Pistes</a></li>
-        <li class="{{ Request::is('clubs') ? "active" : ""}}"><a href="/clubs"">Clubs</a></li>
-        <li class="{{ Request::is('bars') ? "active" : ""}}"><a href="/bars"">Bars</a></li>
-        <li class="{{ Request::is('blog') ? "active" : ""}}"><a href="/blog"">Blog</a></li>
-        <li class="{{ Request::is('about') ? "active" : ""}}"><a href="/about">About</a></li>
-        <li class="{{ Request::is('bachelor-party') ? "active" : ""}}"><a href="/bachelor-party">Bachelor Party</a></li>
-        <li class="{{ Request::is('ekdiloseis-xoroi') ? "active" : ""}}"><a href="/ekdiloseis-xoroi">Ekdilwseis / Xoroi</a></li>
-        <li class="{{ Request::is('etairikes-ekdiloseis') ? "active" : ""}}"><a href="/etairikes-ekdiloseis">Etairikes Ekdilwseis</a></li>
-        <li class="{{ Request::is('contact') ? "active" : ""}}"><a href="/contact">Contact</a></li>
-      </ul>
+
+      <div class="pull-right phone_header"><i class="fa fa-mobile" aria-hidden="true"></i> 694 16 81 692</div>
+
       <ul class="nav navbar-nav navbar-right">    
 
       @if (Auth::guest())
-          <li><a href="{{ route('login') }}">Login</a></li>
-          <li><a href="{{ route('register') }}">Register</a></li>
+          <li class="guest_links"><a href="{{ route('login') }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Σύνδεση</a></li>
+          <li class="guest_links"><a href="{{ route('register') }}"><i class="fa fa-user" aria-hidden="true"></i> Εγγραφή</a></li>
       @else
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  {{ Auth::user()->name }} <span class="caret"></span>
+              <a class="admin_link" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  Διαχείριση <span class="caret"></span>
               </a>
-
               <ul class="dropdown-menu" role="menu">
               @if (Auth::user() &&  Auth::user()->id == '1')
-                  <li><a href=" {{ route('items.index') }} ">Items</a></li>
-                  <li><a href=" {{ route('itags.index') }} ">Itags</a></li>
-                  <li><a href=" {{ route('artists.index') }} ">Artists</a></li>
-                  <li><a href=" {{ route('posts.index') }} ">Posts</a></li>
-                  <li><a href=" {{ route('tags.index') }} ">Tags</a></li>
-                  <li><a href=" {{ route('categories.index') }} ">Categories</a></li>
+              <li><a href=" {{ route('items.index') }} "><i class="fa fa-arrow-right" aria-hidden="true"></i>Μαγαζία</a></li>
+              <li><a href=" {{ route('itags.index') }} "><i class="fa fa-arrow-right" aria-hidden="true"></i>Tag Μαγαζιών</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href=" {{ route('artists.index') }} "><i class="fa fa-arrow-right" aria-hidden="true"></i>Καλλιτέχνες</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href=" {{ route('posts.index') }} "><i class="fa fa-arrow-right" aria-hidden="true"></i>Άρθρα</a></li>
+              <li><a href=" {{ route('tags.index') }} "><i class="fa fa-arrow-right" aria-hidden="true"></i>Tag Άρθρων</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href=" {{ route('categories.index') }} "><i class="fa fa-arrow-right" aria-hidden="true"></i>Κατηγορίες</a></li>
               @endif
-                  <li><a href="/">Dashboard</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                      <a href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                          Logout
-                      </a>
-
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                      </form>
-                  </li>
               </ul>
           </li>
         @endif
 
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

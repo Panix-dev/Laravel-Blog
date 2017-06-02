@@ -211,6 +211,13 @@ class PostController extends Controller
         return redirect()->route('posts.show', $post->id);
     }
 
+    public function delete($id)
+    {
+        $post = Post::find($id);
+
+        return view('posts.delete')->withPost($post);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

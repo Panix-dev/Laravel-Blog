@@ -100,11 +100,7 @@
 							{!! Html::LinkRoute('items.edit', 'Edit', array($item->id), array('class' => 'btn btn-primary btn-block')) !!}
 						</div>
 						<div class="col-sm-6">
-							{!! Form::open(['route' => ['items.destroy', $item->id], 'method' => 'DELETE']) !!}
-
-								{{ Form::submit('Delete', array('class' => 'btn btn-danger btn-block')) }}
-
-			                {!! Form::close() !!}
+			                {!! Html::LinkRoute('items.delete', 'Διαγραφή', array($item->id), array('class' => 'btn btn-danger btn-block')) !!}
 						</div>
 					</div>
 					<div class="row">

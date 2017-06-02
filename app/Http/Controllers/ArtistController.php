@@ -183,6 +183,13 @@ class ArtistController extends Controller
         return redirect()->route('artists.show', $artist->slug);
     }
 
+    public function delete($id)
+    {
+        $artist = Artist::find($id);
+
+        return view('artists.delete')->withArtist($artist);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -25,6 +25,7 @@
 <script type="text/javascript">
 
 (function ($) {
+
     $('body').on('click', '.pagination a', function(e) {
         e.preventDefault();
 

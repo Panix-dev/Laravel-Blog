@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>Metr4u - @yield('title')</title>
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="description" content="@yield('meta_description')">
 <meta name="keywords" content="@yield('meta_keywords')">
 <!-- Bootstrap -->
@@ -13,6 +14,7 @@
 {!! Html::style('css/styles.css') !!}
 {!! Html::style('css/app.css') !!}
 {!! Html::style('css/newsletter.css') !!}
+{!! Html::style('css/menu_cornerbox.css') !!}
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

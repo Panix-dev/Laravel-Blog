@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'All Categories')
+@section('title', 'Κατηγορίες Μαγαζιών')
 
 @section('stylesheets')
 	
@@ -12,16 +12,16 @@
 
         <div class="row">
             
-            <h1>Categories</h1>
+            <h1>Κατηγορίες Μαγαζιών</h1>
 			<hr>
 				
-			<div class="col-md-9">
+			<div class="col-md-7">
 
 				<table class="table table-striped table-bordered table-hover table-responsive">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Name</th>
+							<th>Όνομα Κατηγορίας</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,7 +29,7 @@
 						@foreach ($categories as $category)
 
 						<tr>
-							<td> {{ $category->id }} </td>
+							<td style="width:20px;" align="center"><span class="label label-primary"> {{ $category->id }} </span></td>
 							<td> {{ $category->name }} </td>
 						</tr>
 
@@ -40,18 +40,18 @@
 
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-5">
 				<div class="well">
 					{!! Form::open(array('route' => 'categories.store', 'method' => 'POST', 'data-parsley-validate' => '')) !!}
 						
-						<h2>New Category</h2>
+						<h2>Νέα Κατηγορία</h2>
 
 						<div class="form-group">
-							{{ Form::label('name', 'Category Name:') }}
+							{{ Form::label('name', 'Όνομα Κατηγορίας:') }}
 							{{ Form::text('name', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 						</div>
 
-						{{ Form::submit('Create Category', array('class' => 'btn btn-primary btn-block')) }}
+						{{ Form::submit('Δημιουργία Κατηγορίας', array('class' => 'btn btn-primary btn-block')) }}
 
 					{!! Form::close() !!}
 				</div>

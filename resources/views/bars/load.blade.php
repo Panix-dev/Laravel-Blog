@@ -1,10 +1,19 @@
+<div id="app">
 <div id="load" style="position: relative;">
 	@foreach($items as $item)
 		  <div class="row">
 
 		    <div class="col-md-12">
 
-	          <h2>{{ $item->title }}</h2>
+	        <h2>{{ $item->title }}</h2>
+	        
+			@if (Auth::check())
+					<favorite
+						:item={{ $item->id }}
+						:favorited={{ $item->favorited() ? 'true' : 'false' }}
+					 	keep-alive>
+					 </favorite>
+			@endif
 
 	          <h5>Published: {{ date('M j, Y', strtotime($item->created_at)) }} </h5>
 
@@ -26,4 +35,5 @@
 			{!!  $items->links() !!}
 		</div>
 	</div>
+</div>
 </div>

@@ -40,12 +40,18 @@ class TagController extends Controller
         $this->validate($request, array(
                 'name' => 'required|max:255',
                 'slug' => 'required|alpha_dash|min:5|max:255|unique:tags,slug',
+                'meta_title'     => 'required|max:70',
+                'meta_desscription' => 'required|max:160',
+                'meta_keywords'  => 'required'
             ));
 
         $tag = new Tag;
 
         $tag->name = $request->name;
         $tag->slug = str_slug($request->slug, "-");
+        $tag->meta_title = $request->meta_title;
+        $tag->meta_desscription = $request->meta_desscription;
+        $tag->meta_keywords = $request->meta_keywords;
         $tag->save();
 
         Session::flash('success', 'The new tag was successfully created!');
@@ -107,20 +113,32 @@ class TagController extends Controller
         $this->validate($request, array(
             'name'  => 'required|max:255',
             'slug'         => "required|alpha_dash|min:5|max:255|unique:tags,slug,$id",
+            'meta_title'     => 'required|max:70',
+            'meta_desscription' => 'required|max:160',
+            'meta_keywords'  => 'required'
         ));
 
         // store in the database
 
         $tag->name = $request->input('name');
         $tag->slug = str_slug($request->input('slug'), "-");
-
+        $tag->meta_title = $request->input('meta_title');
+        $tag->meta_desscription = $request->input('meta_desscription');
+        $tag->meta_keywords = $request->input('meta_keywords');
         $tag->save();
 
         // redirect to another page with flash message
 
         Session::flash('success', 'The tag was successfully updated!');
         
-        return redirect()->route('tags.show', $tag->id);
+        return redirect()->route('tags.index');
+    }
+
+    public function delete($id)
+    {
+        $tag = Tag::find($id);
+
+        return view('tags.delete')->withTag($tag);
     }
 
     /**

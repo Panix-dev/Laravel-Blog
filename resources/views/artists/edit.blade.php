@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Edit Artist')
+@section('title', 'Επεξεργασία Καλλιτέχνη')
 
 @section('stylesheets')
 	
@@ -25,7 +25,7 @@
 			<div class="col-md-8">
 
 				<div class="form-group">
-					{{ Form::label('name', 'Artist Name:') }}
+					{{ Form::label('name', 'Όνομα καλλιτέχνη:') }}
 					{{ Form::text('name', null, array('class' => 'form-control input-lg', 'required' => '', 'maxlength' => '255')) }}
 				</div>
 
@@ -35,30 +35,30 @@
 				</div>
 
 				<div class="form-group">
-					{{ Form::label('item_id', 'Item:') }}
+					{{ Form::label('item_id', 'Μαγαζί που εργάζεται:') }}
 					{{ Form::select('item_id', $itemlist, null, array('class' => 'form-control')) }}
 				</div>
 
 				<div class="form-group">
-					{{ Form::label('featured_image', 'Update Featured Image:') }}
+					{{ Form::label('featured_image', 'Κεντρική Εικόνα:') }}
 					{{ Form::file('featured_image') }}
 				</div>
 
 				<div class="form-group">
-					{{ Form::label('body', 'Artist Body:') }}
+					{{ Form::label('body', 'Περιγραφή:') }}
 					{{ Form::textarea('body', null, array('class' => 'form-control artist_body_area')) }}
 				</div>
 
 				<div class="form-group">
 					{{ Form::label('meta_title', 'Meta Title:') }}
 					{{ Form::text('meta_title', null, array('class' => 'form-control meta_title', 'required' => '', 'maxlength' => '70')) }}
-					<div class="meta_title_counter_outer">A maximum of <span class="meta_title_counter"></span> charachters is required.</div>
+					<div class="meta_title_counter_outer">Απαιτείται ένα maximum των <span class="meta_title_counter"></span> χαρακτήρων.</div>
 				</div>
 
 				<div class="form-group">
 					{{ Form::label('meta_desscription', 'Meta Description:') }}
 					{{ Form::textarea('meta_desscription', null, array('class' => 'form-control meta_desscription', 'maxlength' => '160')) }}
-					<div class="meta_desscription_counter_outer">A maximum of <span class="meta_desscription_counter"></span> charachters is required.</div>
+					<div class="meta_desscription_counter_outer">Απαιτείται ένα maximum των <span class="meta_desscription_counter"></span> χαρακτήρων.</div>
 				</div>
 
 				<div class="form-group">
@@ -70,20 +70,20 @@
 			<div class="col-md-4">
 				<div class="well">
 					<dl class="dl-horizontal">
-						<dt>Created At:</dt>
+						<dt>Δημιουργήθηκε στις:</dt>
 						<dd>{{ date('M j, Y h:ia', strtotime($artist->created_at)) }}</dd>
 					</dl>
 					<dl class="dl-horizontal">
-						<dt>Last Updated:</dt>
+						<dt>Τροποποιήθηκε στις:</dt>
 						<dd>{{ date('M j, Y h:ia', strtotime($artist->updated_at)) }}</dd>
 					</dl>
 					<hr>
 					<div class="row">
 						<div class="col-sm-6">
-							{!! Html::LinkRoute('artists.show', 'Cancel', array($artist->slug), array('class' => 'btn btn-danger btn-block')) !!}
+							{!! Html::LinkRoute('artists.show', 'Ακύρωση', array($artist->slug), array('class' => 'btn btn-danger btn-block')) !!}
 						</div>
 						<div class="col-sm-6">
-							{{ Form::submit('Save Changes', array('class' => 'btn btn-success btn-block')) }}
+							{{ Form::submit('Αποθήκευση', array('class' => 'btn btn-success btn-block')) }}
 						</div>
 					</div>
 				</div>

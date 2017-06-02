@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Create New Post')
+@section('title', 'Δημιουργία Νέου Άρθρου')
 
 @section('stylesheets')
 	
@@ -22,13 +22,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-                <h1>Create New Post</h1>
+                <h1>Δημιουργία Νέου Άρθρου</h1>
                 <hr>
 
 				{!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true]) !!}
 					
 					<div class="form-group">
-						{{ Form::label('title', 'Post Title:') }}
+						{{ Form::label('title', 'Τίτλος άρθρου:') }}
 						{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 					</div>
 
@@ -38,7 +38,7 @@
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('category_id', 'Category:') }}
+						{{ Form::label('category_id', 'Κατηγορία:') }}
 						<select name="category_id" class="form-control" required="">
 							@foreach ($categories as $category)
 								<option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -56,29 +56,29 @@
 					</div>
 
 					<div class="btn-group form-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
-				    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Clear</button>
+				    	<button type="button" class="js-programmatic-multi-clear btn btn-default">Εκαθάριση</button>
 				    </div>
 
 				    <div class="form-group">
-						{{ Form::label('featured_image', 'Upload Featured Image:') }}
+						{{ Form::label('featured_image', 'Κεντρική Εικόνα:') }}
 						{{ Form::file('featured_image', array('class' => 'form-control')) }}
 					</div>
 
 					<div class="form-group">
-						{{ Form::label('body', 'Post Body:') }}
+						{{ Form::label('body', 'Περιγραφή:') }}
 						{{ Form::textarea('body', null, array('class' => 'form-control post_body_area')) }}
 					</div>
 
 					<div class="form-group">
 						{{ Form::label('meta_title', 'Meta Title:') }}
 						{{ Form::text('meta_title', null, array('class' => 'form-control meta_title', 'required' => '', 'maxlength' => '70')) }}
-						<div class="meta_title_counter_outer">A maximum of <span class="meta_title_counter"></span> charachters is required.</div>
+						<div class="meta_title_counter_outer">Απαιτείται ένα maximum των <span class="meta_title_counter"></span> χαρακτήρων.</div>
 					</div>
 
 					<div class="form-group">
 						{{ Form::label('meta_desscription', 'Meta Description:') }}
 						{{ Form::textarea('meta_desscription', null, array('class' => 'form-control meta_desscription', 'maxlength' => '160')) }}
-						<div class="meta_desscription_counter_outer">A maximum of <span class="meta_desscription_counter"></span> charachters is required.</div>
+						<div class="meta_desscription_counter_outer">Απαιτείται ένα maximum των <span class="meta_desscription_counter"></span> χαρακτήρων.</div>
 					</div>
 
 					<div class="form-group">
@@ -86,7 +86,7 @@
 						{{ Form::text('meta_keywords', null, array('class' => 'form-control meta_keywords', 'required' => '')) }}
 					</div>
 
-					{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block')) }}
+					{{ Form::submit('Δημιουργία Άρθρου', array('class' => 'btn btn-success btn-lg btn-block')) }}
 
 
                 {!! Form::close() !!}

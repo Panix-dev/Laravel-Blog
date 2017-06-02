@@ -1,21 +1,19 @@
 @extends('main')
 
-@section('title', 'Register')
-@section('meta_description', 'Meta Description To Be Replaced')
-@section('meta_keywords', 'Meta Keywords To Be Replaced')
+@section('title', 'Εγγραφή Νέου Χρήστη')
 
 @section('content')
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Εγγραφή Νέου Χρήστη</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Όνομα</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -29,7 +27,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('mobile_phone') ? ' has-error' : '' }}">
-                            <label for="mobile_phone" class="col-md-4 control-label">Mobile Phone</label>
+                            <label for="mobile_phone" class="col-md-4 control-label">Κινητό Τηλέφωνο</label>
 
                             <div class="col-md-6">
                                 <input id="mobile_phone" type="text" class="form-control" name="mobile_phone" value="{{ old('mobile_phone') }}" required autofocus>
@@ -47,14 +45,14 @@
                                 <div class="checkbox">
                                     <label>
                                         <input name="accept_sms" value="0" type="hidden">
-                                        <input type="checkbox" name="accept_sms" id="accept_sms" value="1" {{ old('accept_sms') ? 'checked' : '' }}> Check the box if you would like to receive SMS offer messages
+                                        <input type="checkbox" name="accept_sms" id="accept_sms" value="1" {{ old('accept_sms') ? 'checked' : '' }}> Επιλέξτε το κουτάκι, εάν θέλετε να λαμβάνετε μηνύματα προσφοράς SMS
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">Διεύθυνση E-Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -82,7 +80,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Επιβεβαίωση Κωδικού</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -92,7 +90,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Εγγραφή
                                 </button>
                             </div>
                         </div>
