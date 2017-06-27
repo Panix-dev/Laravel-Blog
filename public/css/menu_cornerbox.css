@@ -32,7 +32,7 @@ body,
 	z-index: 10;
 	width: 100%;
 	height: 100%;
-	background: rgba(0,0,0,0.3);
+	background: rgba(0,0,0,0.6);
 	content: '';
 	opacity: 0;
 	-webkit-transition: opacity 0.3s, -webkit-transform 0s 0.3s;
@@ -43,7 +43,7 @@ body,
 
 .navbar {
 	background-color: #fff;
-	box-shadow: 0 0 8px -5px #000000;
+	box-shadow: 0 0 16px -5px #999;
 	border-radius: 0;
 	margin-bottom: 0
 }
@@ -55,8 +55,12 @@ body,
 .navbar-collapse {
 	padding: 0;
 }
+.phone_header a {
+	color: #fff !important;
+	text-decoration: none;
+}
 
-.fa-mobile {
+.phone_header .fa-mobile {
     color: #fff;
     font-size: 29px;
     left: 16px;
@@ -140,13 +144,13 @@ body,
 }
 
 .guest_links {
-	background: none;
-	border: none;
+	background: none !important;
+	border: none !important;
 }
 
-.guest_links:hover {
-	background: none;
-	border: none;
+.guest_links:hover, .guest_links:focus, .guest_links a:hover, .guest_links a:focus {
+	background: none !important;
+	border: none !important;
 }
 
 .guest_links a {
@@ -164,9 +168,10 @@ body,
 }
 
 .admin_link {
-	background: #000;
-	color: #fff;
-	border-radius: 4px;
+	background: #000 none repeat scroll 0 0;
+    border-radius: 4px;
+    color: #fff;
+    padding: 17px 17px 18px !important;
 }
 
 .guest_links a i {
@@ -192,6 +197,8 @@ body,
 	transition: transform 0.3s;
 	box-shadow: 0 0 8px -5px #000000;
 	opacity: 0.98;
+
+	overflow: auto;
 }
 
 .profile_menu {
@@ -231,8 +238,8 @@ body,
     background: none;
     color: #fff;
     float: right;
-    margin: 5px;
-    padding: 3px 3px 4px;
+    margin: 1px;
+    padding: 4px 3px 4px;
 }
 
 .dropdown-toggle {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
 
 use App\Post;
@@ -9,7 +11,7 @@ use App\Category;
 use App\Tag;
 use Session;
 use Purifier;
-use Image;
+use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 
 class PostController extends Controller
@@ -65,7 +67,8 @@ class PostController extends Controller
             'featured_image' => 'sometimes|image',
             'meta_title'     => 'required|max:70',
             'meta_desscription' => 'required|max:160',
-            'meta_keywords'  => 'required'
+            'meta_keywords'  => 'required',
+            'popular_post'   => 'required'
         ));
 
         // store in the database
@@ -78,12 +81,23 @@ class PostController extends Controller
         $post->meta_title = $request->meta_title;
         $post->meta_desscription = $request->meta_desscription;
         $post->meta_keywords = $request->meta_keywords;
+        $post->popular_post = $request->popular_post;
 
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            $location_preset = public_path('image_preset/'.$filename);
+            $location_preset_blog = public_path('image_preset_blog/'.$filename);
+            Image::make($image)->resize(800, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($location);
+            Image::make($image)->resize(445, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->crop(445,245)->save($location_preset);
+            Image::make($image)->resize(730, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->crop(730,402)->save($location_preset_blog);
         }
 
         $post->image = $filename;
@@ -166,7 +180,8 @@ class PostController extends Controller
             'featured_image'  => 'image',
             'meta_title'     => 'required|max:70',
             'meta_desscription' => 'required|max:160',
-            'meta_keywords'  => 'required'
+            'meta_keywords'  => 'required',
+            'popular_post'   => 'required'
         ));
 
         // store in the database
@@ -178,6 +193,7 @@ class PostController extends Controller
         $post->meta_title = $request->input('meta_title');
         $post->meta_desscription = $request->input('meta_desscription');
         $post->meta_keywords = $request->input('meta_keywords');
+        $post->popular_post = $request->input('popular_post');
 
         if($request->hasFile('featured_image')) {
             
@@ -185,7 +201,17 @@ class PostController extends Controller
             $image = $request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            $location_preset = public_path('image_preset/'.$filename);
+            $location_preset_blog = public_path('image_preset_blog/'.$filename);
+            Image::make($image)->resize(800, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($location);
+            Image::make($image)->resize(445, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->crop(445,245)->save($location_preset);
+            Image::make($image)->resize(730, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->crop(730,402)->save($location_preset_blog);
 
             $oldFilename = $post->image;
 

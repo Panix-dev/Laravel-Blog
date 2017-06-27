@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-
+	<div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
@@ -43,6 +43,14 @@
 							@foreach ($categories as $category)
 								<option value="{{ $category->id }}">{{ $category->name }}</option>
 							@endforeach
+						</select>
+					</div>
+
+					<div class="form-group">
+						{{ Form::label('popular_post', 'Δημοφιλή Άρθρο:') }}
+						<select name="popular_post" class="form-control" required="">
+								<option value="0">Όχι</option>
+								<option value="1">Ναι</option>
 						</select>
 					</div>
 
@@ -93,7 +101,7 @@
 
             </div>
         </div>
-
+	</div>
 @endsection
 
 @section('scripts')

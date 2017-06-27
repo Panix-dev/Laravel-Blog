@@ -62,6 +62,7 @@
 	transition: transform 0.4s;
 	-webkit-transform: translateY(-100%);
 	transform: translateY(-100%);
+	color: #fff;
 }
 
 .questions li.current > span label,

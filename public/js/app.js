@@ -41158,12 +41158,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('favorite', require('./components/Favorite.vue'));
 
 var app = new Vue({
-  el: '#app',
-  methods: {
-    paginationLog: function paginationLog() {
-      new Vue({ el: '#app' });
-    }
-  }
+  el: '#app'
 });
 
 },{"./bootstrap":33,"./components/Example.vue":34,"./components/Favorite.vue":35}],33:[function(require,module,exports){
@@ -41261,11 +41256,6 @@ exports.default = {
     computed: {
         isFavorite: function isFavorite() {
             return this.favorited;
-        },
-
-
-        pagerLog: function pagerLog() {
-            alert('aa');
         }
     },
 
@@ -41291,7 +41281,7 @@ exports.default = {
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<span>\n    <a href=\"#\" v-if=\"isFavorited\" @click.prevent=\"unFavorite(item)\">\n        <i class=\"fa fa-heart\"></i>\n    </a>\n    <a href=\"#\" v-else=\"\" @click.prevent=\"favorite(item)\">\n        <i class=\"fa fa-heart-o\"></i>\n    </a>\n</span>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<a href=\"#\" v-if=\"isFavorited\" @click.prevent=\"unFavorite(item)\">\n    <i class=\"fa fa-heart\"></i>\n</a>\n<a href=\"#\" v-else=\"\" @click.prevent=\"favorite(item)\">\n    <i class=\"fa fa-heart-o\"></i>\n</a>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

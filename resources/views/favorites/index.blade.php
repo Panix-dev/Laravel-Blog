@@ -6,22 +6,27 @@
 
 <div id="app">
 
-<div class="container">
+<div class="row">
+    <h1 class="itag_heading">Τα Αγαπημένα Μου!<div class="itag_counter"><span class="badge">{{ $myFavorites->count() }}</span> μαγαζιά</div></h1>
+</div>
+
+<div class="container margin_top_container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="row">
-            <div class="col-md-12">
-              <h1>Τα Αγαπημένα Μου!</h1>
-            </div>
-          </div>
+
             @forelse ($myFavorites as $myFavorite)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                
+                <div class="col-md-4">
+                    <div class="favorite_inner">
+                    <div class="favorite_img">
+                        <img src="{{ asset('images/'.$myFavorite->image) }}" alt="{{ $myFavorite->name }}" width="330" height="220">
+                    </div>
+
+                    <div class="favorite_title">
                         {{ $myFavorite->title }}
                     </div>
 
-                    <div class="panel-body">
-                        {!! $myFavorite->body_1 !!}
+                    <div class="favorite_teaser">
+                        {!! $myFavorite->list_teaser !!}
                     </div>
                     @if (Auth::check())
                         <div class="panel-footer">
@@ -32,11 +37,11 @@
                             ></favorite>
                         </div>
                     @endif
+                    </div>
                 </div>
             @empty
-                <p>You have no favorite posts.</p>
+                <p class="empty_favorites"><strong>Δεν έχετε επιλέξει κανένα μαγαζί ως αγαπημένο!</strong> Περιηγηθείτε στις λίστες των μαγαζιών και πατώντας στο εικονίδιο με την καρδιά μπορείτε να το θέσετε ως αγαπημένο. Τα αγαπημένα σας μαγαζιά θα εμφανίζονται πιο ψιλά στην ταξινόμηση.</p>
             @endforelse
-         </div>
     </div>
 </div>
 

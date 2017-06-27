@@ -1,11 +1,10 @@
 @extends('main')
 
-@section('title', 'About')
-@section('meta_description', 'Meta Description To Be Replaced')
-@section('meta_keywords', 'Meta Keywords To Be Replaced')
+@section('title', 'Λίγα λόγια για εμάς')
+@section('meta_description', 'Μια ομάδα που θα σας κάνει να δείτε πόσο εύκολο είναι να διασκεδάζετε ως VIP')
 
 @section('content')
-
+	<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>About Me!</h1>
@@ -14,5 +13,5 @@
                 </p>
             </div>
         </div>
-
+	</div>
 @endsection

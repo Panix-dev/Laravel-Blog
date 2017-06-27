@@ -31,18 +31,82 @@
         
         <div class="content">
 
-          <div class="container">
+
+@php
+  if (Route::getCurrentRoute()->uri() == '/')
+  {
+@endphp
+
+<div class="fluid_container home_slider">
+    <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
+        <div data-src="/img/slides/front_banner_1.jpg">
+          <div class="fadeIn camera_effected">
+            <h2>Some title goes here!</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div data-src="/img/slides/front_banner_2.jpg">
+          <div class="fadeIn camera_effected">
+            <h2>Some title goes here!</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div data-src="/img/slides/front_banner_3.jpg">
+          <div class="fadeIn camera_effected">
+            <h2>Some title goes here!</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+    </div><!-- #camera_wrap_3 -->
+    <!-- <div class="scroll-down-indication"></div> -->
+    <button class="trigger pulse-down" data-info="">
+    <div class="mouse">
+       <div class="wheel"></div>
+    </div>
+    <div class="mouseArrows"><span class="unu"></span> <span class="doi"></span> </div>
+  </button>
+</div><!-- .fluid_container -->
+
+@php
+  }
+@endphp
+
+
+@php
+  if (Route::getCurrentRoute()->uri() == '/')
+  {
+@endphp
+          <div class="home_container">
               
               @include('partials._messages')
 
               @yield('content')
 
           </div> <!-- end of container -->
+@php
+  } else {
+@endphp   
+              
+          @include('partials._messages')
 
+          @yield('content')
+
+@php 
+  }
+@endphp
 
 
           <div class="newsletter">
-            
+              <div class="newsletter_intro">
+                Πραγματοποιήστε την εγγραφή σας στο <strong>newsletter του metr4u.gr</strong> για να λαμβάνετε πρώτοι ενημερώσεις σχετικά με προσφορές που προσφέρουν τα μαγαζιά, απευθείας στο <strong>email σας!</strong>
+              </div>
+
               @include('partials._newsletter')
 
           </div>
@@ -54,8 +118,12 @@
           </div>
 
           <div class="footer_outer">
+          
+            <div class="container">
 
-            @include('partials._footer')
+              @include('partials._footer')
+              
+            </div>
 
           </div>
 
@@ -75,6 +143,10 @@
       </div><!-- /content-wrap -->
 
     </div><!-- /containerr -->
+
+    <div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9b go_to_top">
+      <span class="hi-icon"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+    </div>
 
     @include('partials._javascript')
 

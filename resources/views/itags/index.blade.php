@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-
+	<div class="container">
         <div class="row">
             
             <h1>Tags Μαγαζιών</h1>
@@ -92,7 +92,7 @@
 			</div>
 
         </div> <!-- end of row -->
-
+	</div>
 @endsection
 
 @section('scripts')

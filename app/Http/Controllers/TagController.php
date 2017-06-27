@@ -71,7 +71,11 @@ class TagController extends Controller
     {
         $tag = Tag::where('slug', '=', $slug)->first();
 
+        $tags = Tag::all();
+
         $posts = $tag->posts()->orderBy('post_tag.post_id', 'desc')->paginate(5);
+
+        $populars = Post::orderBy('id', 'desc')->where('popular_post', '=', '1')->limit(3)->get();
 
        // return view('tags.show')->withTag($tag)->withPosts($posts);
 
@@ -80,7 +84,7 @@ class TagController extends Controller
             return view('tags.load', ['posts' => $posts])->render(); 
         }
         // Return a view and pass in the above variable
-        return view('tags.show')->withTag($tag)->withPosts($posts);
+        return view('tags.show')->withTag($tag)->withPosts($posts)->withTags($tags)->withPopulars($populars);
     }
 
     /**

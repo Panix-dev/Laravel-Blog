@@ -4,6 +4,8 @@
 <script src="{{ asset('js/classie.js') }}"></script>
 <script src="{{ asset('js/stepsForm.js') }}"></script>
 <script src="{{ asset('js/menu.js') }}"></script>
+
+
 <script type="text/javascript">
 
 	$(document).ready(function(){

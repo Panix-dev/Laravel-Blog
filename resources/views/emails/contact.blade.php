@@ -1,7 +1,33 @@
-<h3>You have a new contact message via the contact form!</h3>
 
 <div>
-	{{ $bodyMessage }}
+Ονοματεπώνυμο: {{ $name }}
+</div>
+<div>
+Τηλέφωνο: {{ $phone }}
+</div>
+<div>
+Email: {{ $email }}
+</div>
+<div>
+Μήνυμα: {{ $bodyMessage }}
 </div>
 
-<p>Sent via {{ $email }} </p>
+@if ($venue_interest == 1)
+	<br><br>
+	<div>
+	Αριθμός Ατόμων: {{ $people }}
+	</div>
+	<div>
+	Τύπος Προσφοράς: {{ $offer }}
+	</div>
+	<div>
+	Ενδιαφερόμενα Μαγαζιά: 
+		@foreach ($items as $item)
+			{{ $item }} @if ($item != end($items)) , @endif
+		@endforeach
+	</div>
+	<div>
+	Ημερομηνία: {{ $date }}
+	</div>
+
+@endif

@@ -3,7 +3,7 @@
 @section('title', 'Όλα τα Blog Άρθρα')
 
 @section('content')
-		
+<div class="container">		
 	<div class="row">
 		<div class="col-md-10">
 			<h1>Όλα τα Blog Άρθρα</h1>
@@ -50,6 +50,6 @@
 		</div>
 
 	</div>
-
+</div>
 @endsection
 

@@ -16,7 +16,7 @@ use Storage;
 class ItemController extends Controller
 {
     public function __construct() {
-        $this->middleware('admin');
+        $this->middleware('admin', ['except' => array('favoriteItem', 'unFavoriteItem')]);
     }
     /**
      * Display a listing of the resource.
@@ -86,9 +86,12 @@ class ItemController extends Controller
             'google_map'    => 'required',
             'points_to_award' => 'required|integer',
             'featured_image' => 'sometimes|image',
+            'featured_image_2' => 'sometimes|image',
             'meta_title'     => 'required|max:70',
             'meta_desscription' => 'required|max:160',
-            'meta_keywords'  => 'required'
+            'meta_keywords'  => 'required',
+            'front_featured'     => '',
+            'list_teaser'     => 'required|max:195'
         ));
 
         // store in the database
@@ -108,15 +111,30 @@ class ItemController extends Controller
         $item->meta_title = $request->meta_title;
         $item->meta_desscription = $request->meta_desscription;
         $item->meta_keywords = $request->meta_keywords;
+        $item->front_featured = $request->front_featured;
+        $item->list_teaser = $request->list_teaser;
 
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            $location_preset = public_path('image_preset/'.$filename);
+            Image::make($image)->resize(702, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->crop(702,400)->save($location_preset);
+        }
+
+        if ($request->hasFile('featured_image_2')) {
+            $image2 = $request->file('featured_image_2');
+            $filename2 = time().'.'.$image2->getClientOriginalExtension();
+            $location2 = public_path('images/'.$filename2);
+            Image::make($image2)->resize(1920, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($location2);
         }
 
         $item->image = $filename;
+        $item->image2 = $filename2;
 
         $item->save();
 
@@ -204,9 +222,12 @@ class ItemController extends Controller
             'google_map'    => 'required',
             'points_to_award' => 'required|integer',
             'featured_image' => 'sometimes|image',
+            'featured_image_2' => 'sometimes|image',
             'meta_title'     => 'required|max:70',
             'meta_desscription' => 'required|max:160',
-            'meta_keywords'  => 'required'
+            'meta_keywords'  => 'required',
+            'front_featured'     => '',
+            'list_teaser'     => 'required|max:195'
         ));
 
         // store in the database
@@ -225,6 +246,8 @@ class ItemController extends Controller
         $item->meta_title = $request->input('meta_title');
         $item->meta_desscription = $request->input('meta_desscription');
         $item->meta_keywords = $request->input('meta_keywords');
+        $item->front_featured = $request->input('front_featured');
+        $item->list_teaser = $request->input('list_teaser');
 
 
         if($request->hasFile('featured_image')) {
@@ -233,7 +256,10 @@ class ItemController extends Controller
             $image = $request->file('featured_image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            $location_preset = public_path('image_preset/'.$filename);
+            Image::make($image)->resize(702, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->crop(702,400)->save($location_preset);
 
             $oldFilename = $item->image;
 
@@ -242,6 +268,25 @@ class ItemController extends Controller
 
             // Delete the old photo
             Storage::delete($oldFilename);
+        }
+
+        if($request->hasFile('featured_image_2')) {
+            
+            // Add the new photo
+            $image2 = $request->file('featured_image_2');
+            $filename2 = time().'.'.$image2->getClientOriginalExtension();
+            $location2 = public_path('images/'.$filename2);
+            Image::make($image2)->resize(1920, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($location2);
+
+            $oldFilename2 = $item->image2;
+
+            // Update the database
+            $item->image2 = $filename2;
+
+            // Delete the old photo
+            Storage::delete($oldFilename2);
         }
 
         $item->save();

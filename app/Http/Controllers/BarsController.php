@@ -13,13 +13,15 @@ use App\Item;
 use App\Type;
 use App\User;
 use App\Favorite;
+use App\Itag;
 
 
 class BarsController extends Controller
 {
 	public function getIndex(Request $request) {
 
-    	// Fetch from the database based on slug
+
+        // Fetch from the database based on slug
         if (Auth::check()) {
 
             $it_ids = [];
@@ -47,11 +49,11 @@ class BarsController extends Controller
 
    
 
-            $items = ( new Collection( $items ) )->paginate( 1 );
+            $items = ( new Collection( $items ) )->paginate(6);
 
         } 
         else {
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '3')->paginate(1);
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '3')->paginate(6);
         }
         
         if ($request->ajax()) {
@@ -59,7 +61,18 @@ class BarsController extends Controller
         }
         // Return a view and pass in the above variable
 
-        return view('bars.index', compact('items'))->withItems($items);
+        $temp_array = array(); 
+        $i = 0; 
+
+        foreach ($items as $item) {
+            foreach ($item->itags as $itag) {
+                $temp_array[$itag->id] = $itag->name;
+                $i++;
+            }
+        }
+        $result = array_unique($temp_array);
+
+        return view('bars.index', compact('items'))->withItems($items)->withResult($result);
 
     }
 

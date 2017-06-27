@@ -3,7 +3,7 @@
 @section('title', 'Όλα τα Μαγαζιά')
 
 @section('content')
-		
+<div class="container">		
 	<div class="row">
 		<div class="col-md-10">
 			<h1>Όλα τα Μαγαζιά</h1>
@@ -52,6 +52,6 @@
 		</div>
 
 	</div>
-
+</div>
 @endsection
 

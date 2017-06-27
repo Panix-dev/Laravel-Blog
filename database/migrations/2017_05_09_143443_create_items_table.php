@@ -25,7 +25,7 @@ class CreateItemsTable extends Migration
             $table->string('image')->nullable();
             $table->integer('type_id')->nullable()->unsigned();
             $table->string('weekdays');
-            $table->string('google_map');
+            $table->text('google_map');
             $table->integer('points_to_award');
             $table->string('meta_title');
             $table->text('meta_desscription');

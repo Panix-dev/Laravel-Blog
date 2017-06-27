@@ -16,9 +16,11 @@ Route::get('about', 'PagesController@getAbout');
 Route::get('bachelor-party', 'PagesController@getBachelor');
 Route::get('ekdiloseis-xoroi', 'PagesController@getEkdiloseisxoroi');
 Route::get('etairikes-ekdiloseis', 'PagesController@getEtairikesEkdiloseis');
+Route::get('payment-methods', 'PagesController@getPaymentsPage');
+Route::get('privacy-policy', 'PagesController@getPrivacyPage');
 
 Route::get('contact', 'PagesController@getContact');
-Route::post('contact', 'PagesController@postContact');
+Route::post('contact', array('uses' => 'PagesController@postContact', 'as' => 'contact.send'));
 
 Route::get('blog/{slug}', array('uses' => 'BlogController@getSingle', 'as' => 'blog.single'))->where('slug', '[\w\d\-\_]+');
 Route::get('blog', array('uses' => 'BlogController@getIndex', 'as' => 'blog.index'));
@@ -65,5 +67,8 @@ Route::post('favorite/{item}', 'ItemController@favoriteItem');
 Route::post('unfavorite/{item}', 'ItemController@unFavoriteItem');
 
 Route::get('my-favorites', array('uses' => 'UsersController@myFavorites', 'as' => 'favorites.index'))->middleware('auth');
+
+Route::get('filter', 'SearchController@filter');
+Route::get('filter/reset', 'SearchController@filterReset');
 
 Auth::routes();

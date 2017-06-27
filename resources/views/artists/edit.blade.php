@@ -17,7 +17,9 @@
 @endsection
 
 @section('content')
-		
+	
+	<div class="container">
+
 		<div class="row">
 
 			{!! Form::model($artist, ['route' => ['artists.update', $artist->id], 'method' => 'PUT', 'files' => true, 'data-parsley-validate' => '']) !!}
@@ -92,7 +94,9 @@
 			{!! Form::close() !!}
 
 		</div>
-
+	
+	</div>
+	
 @endsection
 
 @section('scripts')

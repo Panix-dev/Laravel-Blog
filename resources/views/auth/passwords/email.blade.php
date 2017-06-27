@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row margin_top_container">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Επαναφορά κωδικόυ πρόσβασης</div>

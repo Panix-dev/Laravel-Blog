@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-		
+	<div class="container">
 		<div class="row">
 
 			{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'files' => true, 'data-parsley-validate' => '']) !!}
@@ -38,6 +38,11 @@
 				<div class="form-group">
 					{{ Form::label('category_id', 'Κατηγορία:') }}
 					{{ Form::select('category_id', $categories, null, array('class' => 'form-control', 'required' => '')) }}
+				</div>
+
+				<div class="form-group">
+					{{ Form::label('popular_post', 'Δημοφιλή Άρθρο:') }}
+					{{ Form::select('popular_post', array('0' => 'Όχι', '1' => 'Ναι'), null, array('class' => 'form-control', 'required' => '')) }}
 				</div>
 
 				<div class="form-group">
@@ -102,7 +107,7 @@
 			{!! Form::close() !!}
 
 		</div>
-
+	</div>
 @endsection
 
 @section('scripts')

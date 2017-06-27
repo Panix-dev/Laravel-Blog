@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-		
+	<div class="container">
 		<div class="row">
 
 			{!! Form::model($item, ['route' => ['items.update', $item->id], 'method' => 'PUT', 'files' => true, 'data-parsley-validate' => '']) !!}
@@ -36,6 +36,15 @@
 					</div>
 
 					<div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                            	{{ Form::checkbox('front_featured', 1, true) }}
+                                 Να εμφανίζεται στην αρχική σελίδα?
+                            </label>
+                        </div>
+                    </div>
+
+					<div class="form-group">
 						{{ Form::label('type_id', 'Τύπος:') }}
 						{{ Form::select('type_id', $typelist, null, array('class' => 'form-control', 'required' => '')) }}
 					</div>
@@ -50,13 +59,24 @@
 				    </div>
 
 				    <div class="form-group">
-						{{ Form::label('featured_image', 'Κεντρική Εικόνα:') }}
+						{{ Form::label('featured_image', 'Εικόνα Λίστας:') }}
 						{{ Form::file('featured_image', array('class' => 'form-control')) }}
+					</div>
+
+					<div class="form-group">
+						{{ Form::label('featured_image_2', 'Εσσωτερική Εικόνα:') }}
+						{{ Form::file('featured_image_2', array('class' => 'form-control')) }}
 					</div>
 
 					<div class="form-group">
 						{{ Form::label('pricing_body', 'Αναφορα Τιμής:') }}
 						{{ Form::textarea('pricing_body', null, array('class' => 'form-control item_body_area')) }}
+					</div>
+
+					<div class="form-group">
+						{{ Form::label('list_teaser', 'Περιγραφή Λίστας:') }}
+						{{ Form::textarea('list_teaser', null, array('class' => 'form-control list_teaser', 'maxlength' => '195')) }}
+						<div class="list_teaser_counter_outer">Απαιτείται ένα maximum των <span class="list_teaser_counter"></span> χαρακτήρων.</div>
 					</div>
 
 					<div class="form-group">
@@ -86,7 +106,7 @@
 
 					<div class="form-group">
 						{{ Form::label('google_map', 'Google Map:') }}
-						{{ Form::text('google_map', null, array('class' => 'form-control', 'required' => '')) }}
+						{{ Form::textarea('google_map', null, array('class' => 'form-control', 'required' => '')) }}
 					</div>
 
 					<div class="form-group">
@@ -137,7 +157,7 @@
 			{!! Form::close() !!}
 
 		</div>
-
+	</div>
 @endsection
 
 @section('scripts')
@@ -185,8 +205,10 @@
 
 		var elem = $(".meta_title_counter");
 		var elem2 = $(".meta_desscription_counter");
+		var elem3 = $(".list_teaser_counter");
 		$(".meta_title").limiter(0, 70, elem);
 		$(".meta_desscription").limiter(0, 160, elem2);
+		$(".list_teaser").limiter(0, 195, elem3);
 	</script>
 
 @endsection

@@ -13,6 +13,7 @@ use App\Item;
 use App\Type;
 use App\User;
 use App\Favorite;
+use App\Itag;
 
 class ClubsController extends Controller
 {
@@ -46,19 +47,29 @@ class ClubsController extends Controller
 
    
 
-            $items = ( new Collection( $items ) )->paginate( 2 );
+            $items = ( new Collection( $items ) )->paginate( 6 );
 
         } 
         else {
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '2')->paginate(2);
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '2')->paginate(6);
         }
         
         if ($request->ajax()) {
             return view('clubs.load', ['items' => $items])->render();  
         }
-        // Return a view and pass in the above variable
 
-        return view('clubs.index', compact('items'))->withItems($items);
+        $temp_array = array(); 
+        $i = 0; 
+
+        foreach ($items as $item) {
+            foreach ($item->itags as $itag) {
+                $temp_array[$itag->id] = $itag->name;
+                $i++;
+            }
+        }
+        $result = array_unique($temp_array);
+
+        return view('clubs.index', compact('items'))->withItems($items)->withResult($result);
 
     }
 

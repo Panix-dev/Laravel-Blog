@@ -3,7 +3,9 @@
 @section('title', 'Όλοι οι Καλλιτέχνες')
 
 @section('content')
-		
+
+<div class="container">
+
 	<div class="row">
 		<div class="col-md-10">
 			<h1>Όλοι οι Καλλιτέχνες</h1>
@@ -50,6 +52,8 @@
 		</div>
 
 	</div>
+
+</div>
 
 @endsection
 

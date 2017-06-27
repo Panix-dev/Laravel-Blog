@@ -13,19 +13,20 @@ use App\Item;
 use App\Type;
 use App\User;
 use App\Favorite;
+use App\Itag;
 
 class PistesController extends Controller
 {
 	public function getIndex(Request $request) {
 
+        $it_ids = [];
+        $fav_ids = [];
+        $result = [];
+        $sorting = [];
+
         // Fetch from the database based on slug
         if (Auth::check()) {
 
-            $it_ids = [];
-            $fav_ids = [];
-            $result = [];
-            $sorting = [];
-            
             $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->get();
             $favorites = Auth::user()->favorites;
 
@@ -46,11 +47,11 @@ class PistesController extends Controller
 
    
 
-            $items = ( new Collection( $items ) )->paginate( 2 );
+            $items = ( new Collection( $items ) )->paginate( 6 );
 
         } 
         else {
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->paginate(5);
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->paginate(6);
         }
         
         if ($request->ajax()) {
@@ -58,7 +59,18 @@ class PistesController extends Controller
         }
         // Return a view and pass in the above variable
 
-        return view('pistes.index', compact('items'))->withItems($items);
+        $temp_array = array(); 
+        $i = 0; 
+
+        foreach ($items as $item) {
+            foreach ($item->itags as $itag) {
+                $temp_array[$itag->id] = $itag->name;
+                $i++;
+            }
+        }
+        $result = array_unique($temp_array);
+
+        return view('pistes.index', compact('items'))->withItems($items)->withResult($result);
 
     }
 

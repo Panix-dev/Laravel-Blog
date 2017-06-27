@@ -5,7 +5,7 @@
 @section('meta_keywords', 'Meta Keywords To Be Replaced')
 
 @section('content')
-
+	<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>Etairikes Ekdilwseis!</h1>
@@ -14,5 +14,5 @@
                 </p>
             </div>
         </div>
-
+	</div>
 @endsection
