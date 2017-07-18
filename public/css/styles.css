@@ -345,12 +345,15 @@ img {
 }
 
 .footer_menu_container {
-	background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
     border-radius: 2px;
+    color: #fff;
     list-style: outside none none;
     margin: 0;
     padding: 25px 40px;
-    color: #fff;
+    font-family: open sans;
+    font-weight: 300;
+    text-align: justify;
 }
 
 .footer_menu_container li {
@@ -703,6 +706,9 @@ button.trigger {
 .home_right p {
 	max-width: 600px;
     margin: 40px 0;
+    text-align: justify;
+    font-weight: 300;
+    font-family: open sans;
 }
 
 .home_divider_section {
@@ -1440,7 +1446,7 @@ figure.effect-marley:hover p {
 }
 
 .inner_venue_banner .category_caption p {
-    background: rgba(255, 255, 255, 0.7) none repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
     color: #fff;
     display: block;
     float: left;
@@ -1450,7 +1456,7 @@ figure.effect-marley:hover p {
 }
 
 .inner_venue_banner .category_caption i {
-	color: #851281;
+	color: #fff;
 	padding-right: 15px;
 }
 
@@ -1462,6 +1468,11 @@ figure.effect-marley:hover p {
 	font-size: 15px;
     line-height: 26px;
     margin-bottom: 30px;
+}
+
+.inner_body_area img {
+	max-width: 100%;
+	height: auto;
 }
 
 .inner_body_area a {

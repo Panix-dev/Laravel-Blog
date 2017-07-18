@@ -19,7 +19,7 @@ class PagesController extends Controller
     	# Pass that data to the correct view
 
         $posts = Post::orderBy('created_at', 'desc')->limit(3)->get();
-        $items = Item::orderBy('id', 'desc')->where('front_featured', '=', '1')->limit(9)->get();
+        $items = Item::orderBy('id', 'desc')->where('front_featured', '=', '1')->where('published', '=', '1')->limit(9)->get();
 
     	return view('pages.welcome')->withPosts($posts)->withItems($items);
     }

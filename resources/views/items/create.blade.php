@@ -141,6 +141,15 @@
 						{{ Form::text('meta_keywords', null, array('class' => 'form-control meta_keywords', 'required' => '')) }}
 					</div>
 
+					<div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input name="published" value="0" type="hidden">
+                                <input type="checkbox" name="published" id="published" value="1" {{ old('published') ? 'checked' : '' }}> Να εμφανίζεται ως δημοσιευμένο?
+                            </label>
+                        </div>
+                    </div>
+
 					{{ Form::submit('Δημιουργία Μαγαζιού', array('class' => 'btn btn-success btn-lg btn-block')) }}
 
 

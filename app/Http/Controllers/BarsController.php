@@ -29,7 +29,7 @@ class BarsController extends Controller
             $result = [];
             $sorting = [];
             
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '3')->get();
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '3')->where('published', '=', '1')->get();
             $favorites = Auth::user()->favorites;
 
             foreach($items as $key => $i) {
@@ -49,11 +49,11 @@ class BarsController extends Controller
 
    
 
-            $items = ( new Collection( $items ) )->paginate(6);
+            $items = ( new Collection( $items ) )->paginate(9);
 
         } 
         else {
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '3')->paginate(6);
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '3')->where('published', '=', '1')->paginate(9);
         }
         
         if ($request->ajax()) {

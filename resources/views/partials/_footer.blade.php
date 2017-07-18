@@ -29,7 +29,7 @@
 	<div class="col-md-4"></div>
 	<div class="col-md-8">
 		<div class="footer_menu_container" style="margin-bottom: 20px;">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Στην ιστοσελίδα μας θα βρείτε όλες τις πληροφορίες που αναζητάτε για το αγαπημένο σας μαγαζί ή κέντρο. Μάθετε τις προνομιακές τιμές φιάλης που έχουμε εξασφαλίσει για εσάς, τα σχήματα, τις ημέρες λειτουργίας και τελευταία hot νέα και εξελίξεις του χώρου.
 		</div>
 	</div>
 	<div class="clear"></div>

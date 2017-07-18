@@ -18,7 +18,7 @@
                 <div class="col-md-4">
                     <div class="favorite_inner">
                     <div class="favorite_img">
-                        <img src="{{ asset('images/'.$myFavorite->image) }}" alt="{{ $myFavorite->name }}" width="330" height="220">
+                        <img src="{{ asset('image_preset/'.$myFavorite->image) }}" alt="{{ $myFavorite->name }}" width="330" height="220">
                     </div>
 
                     <div class="favorite_title">

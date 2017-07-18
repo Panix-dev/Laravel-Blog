@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="display_mobile">
-		<img class="venue_mobile_img" src="{{ asset('images/'.$item->image) }}" alt="{{ $item->title }}">
+		<img class="venue_mobile_img" src="{{ asset('image_preset/'.$item->image) }}" alt="{{ $item->title }}">
 		<h1 class="mobile_heading_venue">{{ $item->title }}</h1>
 	</div>
 
@@ -123,8 +123,8 @@
     				<hr>
 					<div class="inner_body_area">
 						<div class="artists">
-				        	<h2>Καλητέχνες που θα βρίσκονται</h2>
-				        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br>
+				        	<h2>Καλλιτέχνες που θα βρίσκονται</h2>
+				        	<p>Σε αυτό το μαγαζί θα βρείτε τους ακόλουθους καλλιτέχνες που είτε θα βρίσκονται για ολόκληρη την σεζόν ή θα πραγματοποιήσουν guest star εμφανίσεις. Πατήστε πάνω στο όνομά τους για να διαβάσετε αν θέλετε την βιογραφία τους και να μάθετε περισσότερα για αυτούς.<br><br>
 							@foreach($item->artists as $artist)
 							{!! Html::LinkRoute('artists.show', $artist->name, array($artist->slug), array('class' => 'btn btn-default')) !!}
 							@endforeach

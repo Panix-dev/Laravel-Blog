@@ -42,7 +42,7 @@ class ItemController extends Controller
     {
         // Create a variable and sote all the blog posts in it from the database
 
-        $items = Item::orderBy('id', 'desc')->paginate(5);
+        $items = Item::orderBy('id', 'desc')->paginate(15);
 
         // Return a view and pass in the above variable
 
@@ -91,6 +91,7 @@ class ItemController extends Controller
             'meta_desscription' => 'required|max:160',
             'meta_keywords'  => 'required',
             'front_featured'     => '',
+            'published'     => '',
             'list_teaser'     => 'required|max:195'
         ));
 
@@ -112,6 +113,7 @@ class ItemController extends Controller
         $item->meta_desscription = $request->meta_desscription;
         $item->meta_keywords = $request->meta_keywords;
         $item->front_featured = $request->front_featured;
+        $item->published = $request->published;
         $item->list_teaser = $request->list_teaser;
 
         if ($request->hasFile('featured_image')) {
@@ -227,6 +229,7 @@ class ItemController extends Controller
             'meta_desscription' => 'required|max:160',
             'meta_keywords'  => 'required',
             'front_featured'     => '',
+            'published'     => '',
             'list_teaser'     => 'required|max:195'
         ));
 
@@ -247,6 +250,7 @@ class ItemController extends Controller
         $item->meta_desscription = $request->input('meta_desscription');
         $item->meta_keywords = $request->input('meta_keywords');
         $item->front_featured = $request->input('front_featured');
+        $item->published = $request->input('published');
         $item->list_teaser = $request->input('list_teaser');
 
 

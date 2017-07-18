@@ -27,7 +27,7 @@ class ClubsController extends Controller
             $result = [];
             $sorting = [];
             
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '2')->get();
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '2')->where('published', '=', '1')->get();
             $favorites = Auth::user()->favorites;
 
             foreach($items as $key => $i) {
@@ -47,11 +47,11 @@ class ClubsController extends Controller
 
    
 
-            $items = ( new Collection( $items ) )->paginate( 6 );
+            $items = ( new Collection( $items ) )->paginate( 9 );
 
         } 
         else {
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '2')->paginate(6);
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '2')->where('published', '=', '1')->paginate(9);
         }
         
         if ($request->ajax()) {

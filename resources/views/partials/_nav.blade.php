@@ -11,6 +11,7 @@
         <a class="{{ Request::is('pistes') ? "active" : ""}}" href="/pistes""><i class="fa fa-fw fa-glass"></i>Πίστες / Μπουζούκια</a>
         <a class="{{ Request::is('clubs') ? "active" : ""}}" href="/clubs""><i class="fa fa-fw fa-glass"></i>Νυχτερινά Club</a>
         <a class="{{ Request::is('bars') ? "active" : ""}}" href="/bars""><i class="fa fa-fw fa-glass"></i>Νυχτερινά Bar</a>
+        <a class="{{ Request::is('contact') ? "active" : ""}}" href="/contact""><i class="fa fa-fw fa-paper-plane"></i>On-line Κράτηση</a>
         <hr>
         <a class="{{ Request::is('bachelor-party') ? "active" : ""}}" href="/bachelor-party"><i class="fa fa-fw fa-calendar"></i>Bachelor Parties</a>
         <a class="{{ Request::is('ekdiloseis-xoroi') ? "active" : ""}}" href="/ekdiloseis-xoroi"><i class="fa fa-fw fa-calendar"></i>Εκδηλώσεις / Χώροι</a>

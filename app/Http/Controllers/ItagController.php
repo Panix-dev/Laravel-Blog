@@ -69,7 +69,7 @@ class ItagController extends Controller
     {
         $itag = Itag::where('slug', '=', $slug)->first();
 
-        $items = $itag->items()->orderBy('item_itag.item_id', 'desc')->paginate(5);
+        $items = $itag->items()->orderBy('item_itag.item_id', 'desc')->paginate(9);
  
        // return view('tags.show')->withTag($tag)->withPosts($posts);
 

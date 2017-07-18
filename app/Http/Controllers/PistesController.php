@@ -27,7 +27,7 @@ class PistesController extends Controller
         // Fetch from the database based on slug
         if (Auth::check()) {
 
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->get();
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->where('published', '=', '1')->get();
             $favorites = Auth::user()->favorites;
 
             foreach($items as $key => $i) {
@@ -47,11 +47,11 @@ class PistesController extends Controller
 
    
 
-            $items = ( new Collection( $items ) )->paginate( 6 );
+            $items = ( new Collection( $items ) )->paginate( 9 );
 
         } 
         else {
-            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->paginate(6);
+            $items = Item::orderBy('id', 'desc')->where('type_id', '=', '1')->where('published', '=', '1')->paginate(9);
         }
         
         if ($request->ajax()) {

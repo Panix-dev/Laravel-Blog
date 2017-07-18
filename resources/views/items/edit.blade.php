@@ -131,6 +131,15 @@
 						{{ Form::text('meta_keywords', null, array('class' => 'form-control meta_keywords', 'required' => '')) }}
 					</div>
 
+					<div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                            	{{ Form::checkbox('published', 1, true) }}
+                                 Να εμφανίζεται ως δημοσιευμένο?
+                            </label>
+                        </div>
+                    </div>
+
 			</div>
 			<div class="col-md-4">
 				<div class="well">

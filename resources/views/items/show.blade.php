@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				
-				<img src="{{ asset('images/'.$item->image) }}" alt="{{ $item->title }}">
+				<img src="{{ asset('image_preset/'.$item->image) }}" alt="{{ $item->title }}">
 				
 				<h1>{{ $item->title }}</h1>
 				

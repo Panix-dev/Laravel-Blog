@@ -35,7 +35,7 @@ class SearchController extends Controller
 
             //$items = $itag->items()->orderBy('item_itag.item_id', 'desc')->where('type_id', $request->input('type_id'))->get();
 
-            $items = Item::orderBy('id', 'desc')->where('type_id', $request->input('type_id'))->get();
+            $items = Item::orderBy('id', 'desc')->where('type_id', $request->input('type_id'))->where('published', '=', '1')->get();
 
             $favorites = Auth::user()->favorites;
 
@@ -58,7 +58,7 @@ class SearchController extends Controller
 
         } 
         else {
-           $items = Item::orderBy('id', 'desc')->where('type_id', $request->input('type_id'))->paginate(6)->appends('type_id', $request->input('type_id'));
+           $items = Item::orderBy('id', 'desc')->where('type_id', $request->input('type_id'))->where('published', '=', '1')->paginate(6)->appends('type_id', $request->input('type_id'));
            //$items = $itag->items()->orderBy('item_itag.item_id', 'desc')->where('type_id', $request->input('type_id'))->paginate(6);
         }
         
@@ -100,7 +100,7 @@ class SearchController extends Controller
 	    // Fetch from the database based on slug
         if (Auth::check()) {
 
-        	$items = $itag->items()->orderBy('item_itag.item_id', 'desc')->where('type_id', $request->input('type_id'))->get();
+        	$items = $itag->items()->orderBy('item_itag.item_id', 'desc')->where('type_id', $request->input('type_id'))->where('published', '=', '1')->get();
 
             //$items = Item::orderBy('id', 'desc')->where('type_id', $request->input('type_id'))->get();
 
@@ -126,7 +126,7 @@ class SearchController extends Controller
         } 
         else {
            //$items = Item::orderBy('id', 'desc')->where('type_id', $request->input('type_id'))->paginate(6)->appends('type_id', $request->input('type_id'));
-           $items = $itag->items()->orderBy('item_itag.item_id', 'desc')->where('type_id', $request->input('type_id'))->paginate(6);
+           $items = $itag->items()->orderBy('item_itag.item_id', 'desc')->where('type_id', $request->input('type_id'))->where('published', '=', '1')->paginate(6);
         }
         
         if ($request->ajax()) {

@@ -47,7 +47,7 @@
           <a href="{{ route('bars.single', $item->slug) }}"><span class="fa fa-eye"></span></a>
           <a href="/contact"><span class="fa fa-mobile"></span></a>
         </p>
-        <p class="description">{{ substr(strip_tags($item->list_teaser), 0, 200) }}{{ strlen(strip_tags($item->list_teaser)) > 200 ? '...' : '' }}</p>
+        <p class="description">{{ $item->list_teaser }}</p>
       </figcaption>  
 
       </div> 
@@ -101,8 +101,8 @@
   
   <div class="col-md-6 col-sm-12 home_left"></div>
   <div class="col-md-6 col-sm-12 home_right">
-      <h1>Lorem ipsum dolor sit amet</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <h1>Metr4u.gr - Your easy VIP</h1>
+      <p>Καλώς ήλθατε στο metr4u.gr, την πιο διαδεδομένη ιστοσελίδα κρατήσεων για τα νυχτερινά μαγαζιά της Αθήνας. Με πολυετή εμπειρία στον χώρο καταφέρνουμε όλα αυτά τα χρόνια να κάνουμε την νυχτερινή σας διασκέδαση εύκολη και άμεση. Συνεχίζουμε δυναμικά και φέτος να σας παρέχουμε ευχάριστες εμπειρίες, προνομιακές τιμές για τα αγαπημένα σας μαγαζιά ή κέντρα και να σας κάνουμε να νοιώθετε VIP με κάθε σας νυχτερινή απόδραση. Καλέστε μας και κάντε τη επόμενη κράτηση σας μέσα από την απίθανη ομάδα του Metr4U.gr
       <br>
       <a href="/contact" class="hvr-shutter-out-horizontal pull-right">Επικοινωνήστε μαζί μας!</a>
       </p>
