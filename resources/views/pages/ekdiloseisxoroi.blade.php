@@ -10,8 +10,7 @@
         <div class="patter_overaly"></div>
         <div class="full_height_caption">
             <h1>Εκδηλώσεις / Χώροι Εκδηλώσεων</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            <p class="services_top_links"><a href="#service_info_intro_outer" class="btn btn-success btn-lg">Περισσότερα</a> &nbsp; <span class="or_span">ή</span> &nbsp; <a href="/contact" class="btn btn-success btn-lg">Επικοινωνία</a></p>
+            <p class="services_top_links" style="margin-top: 30px;"><a href="#service_info_intro_outer" class="btn btn-success btn-lg">Περισσότερα</a> &nbsp; <span class="or_span">ή</span> &nbsp; <a href="/contact" class="btn btn-success btn-lg">Επικοινωνία</a></p>
         </div>
     </div>
     
@@ -19,8 +18,8 @@
     
     <div class="tm_pb_text_align_center">
                     
-    <h3>Lorem ipsum dolor sit amet</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <h3>Διοργάνωση εταιρικών εκδηλώσεων</h3>
+    <p>Πολύ συχνά πλέον οι εταιρίες αποφασίζουν να οργανώνουν τις εταιρικές τους εκδηλώσεις σε νυχτερινά κέντρα διασκέδασης για τους υπαλλήλους τους. Η διοργάνωση εταιρικών εκδηλώσεων τέτοιου τύπου έχει αποδειχθεί πως συμβάλλει πολύ έντονα στην συσπείρωση της ομάδας καθώς το ευδιάθετο κλίμα φέρνει πιο κοντά  τους ανθρώπους στο να γνωριστούν καλύτερα.</p>
 
     </div>
 
@@ -30,8 +29,8 @@
     
             <div class="">
         
-            <h3>Lorem ipsum dolor sit amet</h3>
-            <p>We’ve made a huge effort to keep site owner away from things with confusing names like PHP, functions, classes, CSS and other geeks’ stuff. All tools you need to create your next project are visual, human friendly and intuitive.</p>
+            <h3>Μοναδική εμπειρία διασκέδασης</h3>
+            <p>Εμπιστευθείτε μας και οργανώστε μια νύχτα που θα θυμούνται οι προσκεκλημένοι σας, με τα ανάλογα happenings και ειδικά events ανάλογα με την φύση και το ύφος της εκδήλωσης. Όπως και να διαμορφωθεί η εκδήλωσή σας, ένα είναι σίγουρο: Θα σας μείνει αξέχαρτη!</p>
 
             </div> <!-- .tm_pb_text -->
 
@@ -46,22 +45,12 @@
 
     <div class="container service_container" id="service_info_intro_outer">
         <div class="row">
+
             <div class="col-md-12">
-                <div class="service_info_intro">
-                    <h2>Bachelor Party Basics</h2>
-                    <p>Here's everything you need to know to make the big bash a success.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="grey_container">
-                    <h2>The Guest List</h2>
-                    <p>The bachelor party began as a gentlemen's party: a civilized evening of drawing-room drinking, smoking, and toasting to the bride's health. Boy, have things changed. While most of today's bachelor parties have ditched the civilized bit in favor of a raunchy night on the town, the list of attendees has stayed the same. The best man throws the shindig and invites friends and relatives of the groom, usually male-only. The only caveats: The list shouldn't include 100 of the groom's closest friends, nor should it include people who don't get along.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="grey_container">
-                    <h2>Time It Right</h2>
-                    <p>The bachelor party began as a gentlemen's party: a civilized evening of drawing-room drinking, smoking, and toasting to the bride's health. Boy, have things changed. While most of today's bachelor parties have ditched the civilized bit in favor of a raunchy night on the town, the list of attendees has stayed the same. The best man throws the shindig and invites friends and relatives of the groom, usually male-only. The only caveats: The list shouldn't include 100 of the groom's closest friends, nor should it include people who don't get along.</p>
+                <div class="grey_container" style="line-height: 33px; margin-top: 50px; text-align: center;">
+                    <h2>Διοργάνωση σε Club ή Μπουζούκια</h2>
+                    <p>Ανάλογα με την διάθεση και το ύφος της εταιρικής ομάδας που θα συμμετέχει στο event έχετε δύο επιλογές.</p>
+                    <p>Διοργανώστε την επόμενη εταιρική σας εκδήλωση σε ένα από τα συνεργαζόμενα Club ή Πίστες τα οποία εσείς προτιμάτε και επικοινωνήστε μαζί μας για να φροντίσουμε να σας εξασφαλίσουμε την καλύτερη δυνατή τιμή αλλά και εμπειρία. Με πολυετή εμπειρία στον χώρο και έχοντας αναπτύξει σχέση με τα συνεργαζόμενα Club και μπουζούκια, είμαστε οι πλέον κατάλληλοι για πετύχουμε για εσάς το καλύτερο δυνατό αποτέλεσμα. Αφήστε τα πάντα σε εμάς και εσείς απλά διασκεδάστε μέχρι το πρωί.</p>
                 </div>
             </div>
 

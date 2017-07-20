@@ -2300,6 +2300,8 @@ figure.effect-julia:hover p {
     max-width: 860px;
     text-align: center;
     margin: 0 auto;
+    font-family: open sans;
+    font-weight: 300;
 }
 
 .tm_pb_text_align_center h3 {
@@ -2334,6 +2336,7 @@ figure.effect-julia:hover p {
 .service_outer_left p {
     font-size: 18px;
     font-weight: 300;
+    font-family: open sans;
 }
 
 .service_outer_right {
@@ -2432,8 +2435,12 @@ figure.effect-julia:hover p {
 	font-weight: 300;
 }
 
+#service_info_intro_outer {
+	font-family: open sans;
+}
+
 .service_info_intro {
-	 margin: 0 auto;
+	margin: 0 auto;
     max-width: 860px;
     padding: 75px 0;
     text-align: center;
