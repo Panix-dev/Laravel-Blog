@@ -2,9 +2,9 @@
 
 > A full featured blog site with authentication and admin pages. 
 
-<p>
+
 <img src="https://laravel.com/assets/img/components/logo-laravel.svg" title="Laravel" alt="Laravel" />
-</p>
+
 
 A full-featured website using the Laravel Framework with blogging functionalities. The website uses the Laravel auth scaffolding for user registration and login and contains all the appropriate admin pages for creating, editing, deleting, etc.
 
